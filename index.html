@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Plasmovet · Gomes Lab — Vector Biology & Immunometabolism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Home-specific */
+.hero { padding-top: 100px; padding-bottom: 40px; }
+.hero-art-inner { position: absolute; inset: 0; }
+.hero-diagram { width: 100%; height: 100%; }
+
+.highlight-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.highlight-grid > * { background: var(--paper); padding: 36px; display: flex; flex-direction: column; min-height: 360px; transition: background .3s ease; }
+.highlight-grid > *:hover { background: white; }
+.highlight-grid .major { background: var(--ink); color: var(--paper); }
+.highlight-grid .major:hover { background: var(--ink); }
+.highlight-grid .major .chip { color: var(--coral); border-color: rgba(255,255,255,.2); background: transparent; }
+.highlight-grid .major h3 { color: var(--paper); }
+.highlight-grid .meta-row { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+.highlight-grid .major .meta-row { color: rgba(255,255,255,.5); }
+.highlight-grid h3 { font-family: 'Instrument Serif', serif; font-size: 28px; line-height: 1.08; letter-spacing: -0.015em; margin-bottom: 14px; }
+.highlight-grid .major h3 { font-size: 36px; }
+.highlight-grid p { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+.highlight-grid .major p { color: rgba(255,255,255,.7); }
+.highlight-grid .foot { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-2); display: flex; justify-content: space-between; align-items: center; }
+.highlight-grid .major .foot { border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.8); }
+@media (max-width: 960px) { .highlight-grid { grid-template-columns: 1fr; } }
+
+/* Research strips */
+.research-strips { display: flex; flex-direction: column; }
+.research-strip { display: grid; grid-template-columns: 100px 1fr 2fr 120px; gap: 40px; padding: 32px 0; border-top: 1px solid var(--line); align-items: start; transition: padding .3s ease; cursor: pointer; position: relative; }
+.research-strip:last-child { border-bottom: 1px solid var(--line); }
+.research-strip:hover { padding-left: 12px; }
+.research-strip .num { font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; color: var(--coral); letter-spacing: -0.02em; }
+.research-strip h3 { font-family: 'Instrument Serif', serif; font-size: 32px; line-height: 1.08; letter-spacing: -0.015em; }
+.research-strip p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.research-strip .arrow-cell { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.research-strip .arrow-cell svg { margin-left: 6px; transition: transform .2s ease; vertical-align: middle; }
+.research-strip:hover .arrow-cell svg { transform: translateX(4px); color: var(--coral); }
+@media (max-width: 900px) { .research-strip { grid-template-columns: 60px 1fr; gap: 20px; } .research-strip > *:nth-child(3), .research-strip > *:nth-child(4) { grid-column: 2; } }
+
+/* PI section */
+.pi-section { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; }
+.pi-section .quote-big {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.08; letter-spacing: -0.02em;
+  max-width: 22ch; margin: 0 auto;
+  text-align: center; color: var(--paper);
+  padding: 40px 0;
+}
+.pi-section .quote-big em { color: var(--coral); font-style: italic; }
+.pi-section .quote-big::before { content: '"'; color: var(--coral); }
+.pi-section .quote-big::after { content: '"'; color: var(--coral); }
+.pi-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center; margin-top: 40px; }
+@media (max-width: 720px) { .pi-grid { grid-template-columns: 1fr; } }
+.pi-photo { aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: var(--ink-2); position: relative; }
+.pi-photo svg { width: 100%; height: 100%; display: block; }
+.pi-info .name { font-family: 'Instrument Serif', serif; font-size: 40px; letter-spacing: -0.02em; margin-bottom: 6px; }
+.pi-info .title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 24px; }
+.pi-info p { font-size: 15px; line-height: 1.7; opacity: .8; max-width: 58ch; }
+.pi-info .pi-meta { display: flex; gap: 48px; margin-top: 28px; flex-wrap: wrap; }
+.pi-info .pi-meta div .num { font-family: 'Instrument Serif', serif; font-size: 36px; color: var(--coral); }
+.pi-info .pi-meta div .lab { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: .6; margin-top: 4px; }
+
+/* News */
+.news-layout { display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; align-items: start; }
+@media (max-width: 980px) { .news-layout { grid-template-columns: 1fr; } }
+.news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 640px) { .news-grid { grid-template-columns: 1fr; } }
+.news-card { background: white; border: 1px solid var(--line); border-radius: 4px; padding: 28px; transition: all .3s ease; display: flex; flex-direction: column; min-height: 260px; }
+
+/* Twitter embed */
+.twitter-panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px 24px 8px;
+  position: relative;
+  overflow: hidden;
+}
+.twitter-panel .tw-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 16px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.twitter-panel .tw-handle {
+  display: flex; align-items: center; gap: 10px;
+}
+.twitter-panel .tw-handle .tw-ico {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+}
+.twitter-panel .tw-handle .tw-name {
+  font-family: 'Instrument Serif', serif; font-size: 20px; line-height: 1;
+}
+.twitter-panel .tw-handle .tw-at {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; color: var(--muted); margin-top: 2px; display: block;
+}
+.twitter-panel .tw-live {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral-deep);
+}
+.twitter-panel .tw-live::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--coral); box-shadow: 0 0 0 0 rgba(243,133,92,.6);
+  animation: tw-pulse 2s ease-out infinite;
+}
+@keyframes tw-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(243,133,92,.6); }
+  70% { box-shadow: 0 0 0 10px rgba(243,133,92,0); }
+  100% { box-shadow: 0 0 0 0 rgba(243,133,92,0); }
+}
+.twitter-panel .tw-scroll {
+  max-height: 560px; overflow-y: auto; overflow-x: hidden;
+  margin: 0 -8px; padding: 0 8px;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.twitter-panel .tw-scroll::-webkit-scrollbar { width: 4px; }
+.twitter-panel .tw-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+.twitter-panel .tw-scroll twitterwidget,
+.twitter-panel .tw-scroll iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.twitter-panel .tw-fallback {
+  padding: 20px 0; font-size: 13px; color: var(--muted); line-height: 1.6;
+  text-align: center;
+}
+.twitter-panel .tw-foot {
+  padding: 12px 0 6px;
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.twitter-panel .tw-foot a { color: var(--coral-deep); }
+.twitter-panel .tw-foot a:hover { text-decoration: underline; }
+/* Graceful loading skeleton */
+.tw-skeleton {
+  display: flex; flex-direction: column; gap: 18px; padding: 8px 0 16px;
+}
+.tw-skeleton .sk {
+  background: var(--paper-2); border-radius: 3px; height: 14px;
+  animation: sk-shimmer 1.8s ease-in-out infinite alternate;
+}
+.tw-skeleton .sk.short { width: 55%; }
+.tw-skeleton .sk.med { width: 85%; }
+.tw-skeleton .sk.hr { height: 1px; background: var(--line); animation: none; }
+@keyframes sk-shimmer { from { opacity: .6; } to { opacity: 1; } }
+.news-card:hover { border-color: var(--coral); transform: translateY(-2px); }
+.news-card .date { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.news-card h4 { font-family: 'Instrument Serif', serif; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 10px; }
+.news-card p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.news-card .tag-row { margin-top: auto; padding-top: 20px; }
+
+/* Affiliations */
+.affils { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.affil { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink-2); letter-spacing: -0.01em; display: flex; flex-direction: column; gap: 2px; }
+.affil small { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-2); font-weight: 500; }
+
+/* Opportunities banner */
+.opps { background: var(--coral-wash); border-radius: 6px; padding: 48px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
+.opps h3 { font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 44px); line-height: 1.05; letter-spacing: -0.02em; }
+.opps h3 em { color: var(--coral-deep); font-style: italic; }
+.opps p { font-size: 15px; color: var(--ink-2); margin: 14px 0 0; line-height: 1.6; max-width: 46ch; }
+.opps-list { display: flex; flex-direction: column; gap: 12px; }
+.opps-list .opp { background: white; padding: 16px 20px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; gap: 16px; border: 1px solid var(--line); }
+.opps-list .opp .lbl { font-size: 13px; font-weight: 500; }
+.opps-list .opp .loc { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 720px) { .opps { grid-template-columns: 1fr; padding: 32px; } }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="section-label">
+            <span class="bar"></span>
+            <span class="eyebrow" data-i18n-en="IBCCF · UFRJ · Rio de Janeiro" data-i18n-pt="IBCCF · UFRJ · Rio de Janeiro">IBCCF · UFRJ · Rio de Janeiro</span>
+          </div>
+          <h1 data-i18n-html
+              data-i18n-en="Decoding <em>immunity</em> &amp; <em>metabolism</em> in disease vectors."
+              data-i18n-pt="Decifrando <em>imunidade</em> e <em>metabolismo</em> em vetores de doenças.">
+            Decoding <em>immunity</em> &amp; <em>metabolism</em> in disease vectors.
+          </h1>
+          <p class="lede"
+             data-i18n-en="We investigate how mosquito innate immunity and host metabolic conditions regulate vector competence for arboviruses and malaria parasites — paving the way for novel transmission-blocking strategies."
+             data-i18n-pt="Investigamos como a imunidade inata de mosquitos e as condições metabólicas do hospedeiro regulam a competência vetorial para arbovírus e parasitas da malária — abrindo caminho para novas estratégias de bloqueio de transmissão.">
+            We investigate how mosquito innate immunity and host metabolic conditions regulate vector competence for arboviruses and malaria parasites — paving the way for novel transmission-blocking strategies.
+          </p>
+          <div class="hero-actions">
+            <a href="research.html" class="btn btn-primary">
+              <span data-i18n-en="Our research" data-i18n-pt="Nossa pesquisa">Our research</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="publications.html" class="btn btn-ghost">
+              <span data-i18n-en="Publications" data-i18n-pt="Publicações">Publications</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-art grain">
+            <div class="hero-art-inner">
+              <img src="assets/hero-mosquito.png" alt="Vector–pathogen interface illustration" class="hero-diagram" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block"/>
+            </div>
+            <div class="caption">
+              <span>FIG. 01</span>
+              <span>VECTOR · PATHOGEN INTERFACE</span>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">15+</div>
+            <div class="label" data-i18n-en="Years investigating vector immunity" data-i18n-pt="Anos estudando imunidade de vetores">YEARS INVESTIGATING INSECT BIOLOGY AND IMMUNITY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliations -->
+  <!-- Recent highlights -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="01 · Highlights" data-i18n-pt="01 · Destaques">01 · Highlights</span></div>
+          <h2 data-i18n-html data-i18n-en="Recent <em>discoveries</em> and laboratory milestones." data-i18n-pt="Descobertas <em>recentes</em> e marcos do laboratório.">Recent <em>discoveries</em> and laboratory milestones.</h2>
+        </div>
+        <div class="right">
+          <a href="publications.html" class="btn btn-ghost">
+            <span data-i18n-en="See all publications" data-i18n-pt="Ver todas">See all publications</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="highlight-grid">
+        <article class="major">
+          <div class="meta-row">
+            <span>New publication · Frontiers in Immunology</span>
+            <span>2025</span>
+          </div>
+          <h3 data-i18n-en="Diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections." data-i18n-pt="Fenótipo obeso e diabético induzido por dieta reduz infecções por ZIKV em mosquitos.">Diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections.</h3>
+          <p data-i18n-en="Blood from diet-induced obese and diabetic mice remodels Aedes aegypti gut metabolism and reduces Zika virus infections, establishing a novel immunometabolic axis in arbovirus transmission."
+             data-i18n-pt="O sangue de camundongos obesos e diabéticos remodela o metabolismo intestinal de Aedes aegypti e reduz infecções por Zika, estabelecendo um eixo imunometabólico inédito na transmissão.">Blood from diet-induced obese and diabetic mice remodels Aedes aegypti gut metabolism and reduces Zika virus infections, establishing a novel immunometabolic axis in arbovirus transmission.</p>
+          <div class="foot">
+            <span>Menezes A, Walter-Nuno AB, Costa-Bartuli E et al.</span>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="meta-row">
+            <span>Landmark · PNAS</span>
+            <span>2021</span>
+          </div>
+          <h3 data-i18n-en="Innate immune memory in primed mosquitoes." data-i18n-pt="Memória imune inata em mosquitos sensibilizados.">Innate immune memory in primed mosquitoes.</h3>
+          <p data-i18n-en="Double peroxidase and histone acetyltransferase AgTip60 maintain immune memory in Anopheles — the first mechanistic description of trained immunity in vectors."
+             data-i18n-pt="Dupla peroxidase e a histona acetiltransferase AgTip60 mantêm memória imune em Anopheles — a primeira descrição mecanística de imunidade treinada em vetores.">Double peroxidase and histone acetyltransferase AgTip60 maintain immune memory in Anopheles — the first mechanistic description of trained immunity in vectors.</p>
+          <div class="foot">
+            <span>Gomes FM et al.</span>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="meta-row">
+            <span>Review · J Mol Evol</span>
+            <span>2024</span>
+          </div>
+          <h3 data-i18n-en="Evolution of innate immunity across animals." data-i18n-pt="Evolução da imunidade inata nos animais.">Evolution of innate immunity across animals.</h3>
+          <p data-i18n-en="Comprehensive analyses tracing the major components of innate immunity across animal evolution, connecting mammalian trained immunity to invertebrate systems."
+             data-i18n-pt="Análises abrangentes rastreando os principais componentes da imunidade inata na evolução animal, conectando imunidade treinada mamária a sistemas de invertebrados.">Comprehensive analyses tracing the major components of innate immunity across animal evolution, connecting mammalian trained immunity to invertebrate systems.</p>
+          <div class="foot">
+            <span>Silva RCM & Gomes FM</span>
+            <span class="arrow">→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research strips -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="02 · Research lines" data-i18n-pt="02 · Linhas de pesquisa">02 · Research lines</span></div>
+          <h2 data-i18n-html data-i18n-en="At the intersection of <em>vector immunity</em> and <em>host metabolism</em>." data-i18n-pt="Na intersecção entre <em>imunidade vetorial</em> e <em>metabolismo do hospedeiro</em>.">At the intersection of <em>vector immunity</em> and <em>host metabolism</em>.</h2>
+        </div>
+      </div>
+
+      <div class="research-strips">
+        <a href="research.html" class="research-strip">
+          <div class="num">01</div>
+          <h3 data-i18n-en="Innate immune memory." data-i18n-pt="Memória imune inata.">Innate immune memory.</h3>
+          <p data-i18n-en="Epigenetic regulators of trained immunity in Anopheles mosquitoes primed by Plasmodium infection."
+             data-i18n-pt="Reguladores epigenéticos da imunidade treinada em mosquitos Anopheles sensibilizados por infecção por Plasmodium.">Epigenetic regulators of trained immunity in Anopheles mosquitoes primed by Plasmodium infection.</p>
+          <div class="arrow-cell"><span data-i18n-en="Read" data-i18n-pt="Ler">Read</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+        <a href="research.html" class="research-strip">
+          <div class="num">02</div>
+          <h3 data-i18n-en="Host immunometabolism." data-i18n-pt="Imunometabolismo do hospedeiro.">Host immunometabolism.</h3>
+          <p data-i18n-en="How obesity and diabetes in vertebrate hosts alter mosquito biology and arbovirus susceptibility."
+             data-i18n-pt="Como obesidade e diabetes em hospedeiros vertebrados alteram a biologia do mosquito e a suscetibilidade a arbovírus.">How obesity and diabetes in vertebrate hosts alter mosquito biology and arbovirus susceptibility.</p>
+          <div class="arrow-cell"><span data-i18n-en="Read" data-i18n-pt="Ler">Read</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+        <a href="research.html" class="research-strip">
+          <div class="num">03</div>
+          <h3 data-i18n-en="Evolution of innate immunity." data-i18n-pt="Evolução da imunidade inata.">Evolution of innate immunity.</h3>
+          <p data-i18n-en="Tracing immune system components across animals, connecting vertebrate and invertebrate paradigms."
+             data-i18n-pt="Rastreando componentes do sistema imune em diferentes animais, conectando paradigmas vertebrados e invertebrados.">Tracing immune system components across animals, connecting vertebrate and invertebrate paradigms.</p>
+          <div class="arrow-cell"><span data-i18n-en="Read" data-i18n-pt="Ler">Read</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+        <a href="research.html" class="research-strip">
+          <div class="num">04</div>
+          <h3 data-i18n-en="Polyphosphate biology." data-i18n-pt="Biologia do polifosfato.">Polyphosphate biology.</h3>
+          <p data-i18n-en="PolyP storage, phosphate sensing, and DAPI-based in situ visualization across eukaryotes."
+             data-i18n-pt="Armazenamento de polifosfato, sensoriamento de fosfato e visualização in situ baseada em DAPI em eucariotos.">PolyP storage, phosphate sensing, and DAPI-based in situ visualization across eukaryotes.</p>
+          <div class="arrow-cell"><span data-i18n-en="Read" data-i18n-pt="Ler">Read</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+        <a href="research.html" class="research-strip">
+          <div class="num">05</div>
+          <h3 data-i18n-en="Gut physiology & ultrastructure." data-i18n-pt="Fisiologia e ultraestrutura intestinal.">Gut physiology &amp; ultrastructure.</h3>
+          <p data-i18n-en="Insect midgut cell biology, nutrient processing and oxidant-gut relationships relevant to vector biology."
+             data-i18n-pt="Biologia celular do intestino de insetos, processamento de nutrientes e relações oxidante-intestino na biologia de vetores.">Insect midgut cell biology, nutrient processing and oxidant-gut relationships relevant to vector biology.</p>
+          <div class="arrow-cell"><span data-i18n-en="Read" data-i18n-pt="Ler">Read</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PI section -->
+  <section class="pi-section">
+    <div class="container">
+      <div class="section-label" style="justify-content:center">
+        <span class="bar" style="background:var(--coral)"></span>
+        <span class="eyebrow" style="color:var(--coral)" data-i18n-en="03 · Principal investigator" data-i18n-pt="03 · Pesquisador principal">03 · Principal investigator</span>
+        <span class="bar" style="background:var(--coral)"></span>
+      </div>
+      <div class="quote-big"
+           data-i18n-en="We are decoding the molecular language of vector–pathogen interactions to develop novel strategies against disease transmission."
+           data-i18n-pt="Decifrando a linguagem molecular das interações vetor–patógeno para desenvolver novas estratégias contra a transmissão de doenças.">
+        We are decoding the molecular language of vector–pathogen interactions to develop novel strategies against disease transmission.
+      </div>
+
+      <div class="pi-grid">
+        <div class="pi-photo">
+          <img src="assets/pi-photo.jpeg" alt="Dr. Fabio M. Gomes" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(0.85) contrast(1.05);"/>
+        </div>
+        <div class="pi-info">
+          <div class="name">Dr. Fabio M. Gomes</div>
+          <div class="title" data-i18n-en="Associate Professor · Principal Investigator" data-i18n-pt="Professor Associado · Pesquisador Principal">Associate Professor · Principal Investigator</div>
+          <p data-i18n-en="Associate Professor at the Institute of Biophysics Carlos Chagas Filho (IBCCF/UFRJ). Ph.D. in Biological Sciences — Biophysics (UFRJ, 2012). Intramural Fellow at NIH/NIAID, postdoctoral researcher at Johns Hopkins University, and Marie Skłodowska-Curie Individual Fellow at CNRS (Paris). Coordinator of the Vector Insects Platform, Vice-Director of the Advanced Microscopy Unit at CENABIO, and Coordinator of the Graduate Program in Parasitology and Cell Biology."
+             data-i18n-pt="Professor Adjunto no Instituto de Biofísica Carlos Chagas Filho (IBCCF/UFRJ). Doutor em Ciências Biológicas — Biofísica (UFRJ, 2012). Intramural Fellow no NIH/NIAID, pós-doutorando na Johns Hopkins University e Marie Skłodowska-Curie Individual Fellow no CNRS (Paris). Coordenador da Plataforma de Insetos Vetores, Vice-Diretor da Unidade de Microscopia Avançada do CENABIO e Coordenador do Programa de Parasitologia e Biologia Celular.">Associate Professor at IBCCF/UFRJ. Ph.D. in Biological Sciences — Biophysics (UFRJ, 2012). Intramural Fellow at NIH/NIAID, postdoctoral researcher at Johns Hopkins, and Marie Skłodowska-Curie Fellow at CNRS (Paris). Coordinator of the Vector Insects Platform, Vice-Director of the Advanced Microscopy Unit at CENABIO.</p>
+          <div class="pi-meta">
+            <div><div class="num">2</div><div class="lab">PNAS</div></div>
+            <div><div class="num">3</div><div class="lab">PLoS Pathogens</div></div>
+            <div><div class="num">35+</div><div class="lab" data-i18n-en="Peer-reviewed papers" data-i18n-pt="Artigos revisados">Peer-reviewed papers</div></div>
+          </div>
+          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+            <a href="team.html" class="btn btn-coral"><span data-i18n-en="Meet the team" data-i18n-pt="Conheça a equipe">Meet the team</span> <span class="arrow">→</span></a>
+            <a href="https://www.ncbi.nlm.nih.gov/myncbi/fabio.gomes.2/bibliography/public/" target="_blank" class="btn btn-ghost" style="background:transparent;border-color:rgba(255,255,255,.2);color:var(--paper)">PubMed</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="04 · News &amp; updates" data-i18n-pt="04 · Notícias e atualizações">04 · News &amp; updates</span></div>
+          <h2 data-i18n-html data-i18n-en="From the <em>lab</em>." data-i18n-pt="Do <em>laboratório</em>.">From the <em>lab</em>.</h2>
+        </div>
+        <div class="right">
+          <a href="news.html" class="btn btn-ghost"><span data-i18n-en="All news" data-i18n-pt="Todas as notícias">All news</span> <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="news-layout">
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="date" data-i18n-en="2025 · PUBLICATION" data-i18n-pt="2025 · PUBLICAÇÃO">2025 · PUBLICATION</div>
+            <h4 data-i18n-html data-i18n-en="New paper in Frontiers in Immunology: host obesity reduces ZIKV in <em>Aedes aegypti</em>." data-i18n-pt="Novo artigo na Frontiers in Immunology: obesidade do hospedeiro reduz ZIKV em <em>Aedes aegypti</em>.">New paper in Frontiers in Immunology: host obesity reduces ZIKV in <em>Aedes aegypti</em>.</h4>
+            <p data-i18n-en="Menezes, Walter-Nuno et al. — diet-induced obese and diabetic host blood remodels mosquito gut metabolism and significantly reduces Zika virus infection."
+               data-i18n-pt="Menezes, Walter-Nuno et al. — sangue de hospedeiro obeso e diabético induzido por dieta remodela o metabolismo intestinal do mosquito e reduz infecções por Zika.">Menezes, Walter-Nuno et al. — diet-induced obese and diabetic host blood remodels mosquito gut metabolism and significantly reduces Zika virus infection.</p>
+            <div class="tag-row"><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="Front. Immunol. · 2025" data-i18n-pt="Front. Immunol. · 2025">Front. Immunol. · 2025</span></span></div>
+          </article>
+          <article class="news-card">
+            <div class="date" data-i18n-en="GRANT · FAPERJ" data-i18n-pt="GRANT · FAPERJ">GRANT · FAPERJ</div>
+            <h4 data-i18n-en="Awarded the FAPERJ Jovem Cientista do Nosso Estado fellowship." data-i18n-pt="Contemplado com a bolsa FAPERJ Jovem Cientista do Nosso Estado.">Awarded the FAPERJ Jovem Cientista do Nosso Estado fellowship.</h4>
+            <p data-i18n-en="Three-year programme supporting our work on host-immunometabolism and arbovirus vector competence."
+               data-i18n-pt="Programa de três anos apoiando nosso trabalho em imunometabolismo do hospedeiro e competência vetorial para arbovírus.">Three-year programme supporting our work on host-immunometabolism and arbovirus vector competence.</p>
+            <div class="tag-row"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Funding · FAPERJ" data-i18n-pt="Financiamento · FAPERJ">Funding · FAPERJ</span></span></div>
+          </article>
+          <article class="news-card">
+            <div class="date" data-i18n-en="GRANT · SERRAPILHEIRA" data-i18n-pt="GRANT · SERRAPILHEIRA">GRANT · SERRAPILHEIRA</div>
+            <h4 data-i18n-en="Selected by the Instituto Serrapilheira young investigator call." data-i18n-pt="Selecionado pela chamada de jovem pesquisador do Instituto Serrapilheira.">Selected by the Instituto Serrapilheira young investigator call.</h4>
+            <p data-i18n-en="Highly competitive private-philanthropy grant funding bold, basic-science questions on vector-borne disease biology."
+               data-i18n-pt="Edital altamente competitivo de filantropia privada, financiando questões ousadas de ciência básica em biologia de doenças transmitidas por vetores.">Highly competitive private-philanthropy grant funding bold, basic-science questions on vector-borne disease biology.</p>
+            <div class="tag-row"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Funding · Serrapilheira" data-i18n-pt="Financiamento · Serrapilheira">Funding · Serrapilheira</span></span></div>
+          </article>
+          <article class="news-card" style="background:var(--coral-wash);border-color:var(--coral-soft)">
+            <div class="date" style="color:var(--coral-deep)" data-i18n-en="ONGOING" data-i18n-pt="EM CURSO">ONGOING</div>
+            <h4 data-i18n-en="Open applications: postdoc, PhD and undergraduate positions." data-i18n-pt="Candidaturas abertas: pós-doc, doutorado e iniciação científica.">Open applications: postdoc, PhD and undergraduate positions.</h4>
+            <p data-i18n-en="Funded positions across all research lines. We especially welcome candidates from under-represented backgrounds."
+               data-i18n-pt="Posições com bolsa em todas as linhas de pesquisa. Especial acolhimento a candidatos de grupos sub-representados.">Funded positions across all research lines. We especially welcome candidates from under-represented backgrounds.</p>
+            <div class="tag-row"><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="Join us" data-i18n-pt="Junte-se">Join us</span></span></div>
+          </article>
+        </div>
+
+        <aside class="twitter-panel" aria-label="PlasmoVet on X/Twitter">
+          <div class="tw-head">
+            <div class="tw-handle">
+              <span class="tw-ico" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </span>
+              <span>
+                <span class="tw-name">PlasmoVet</span>
+                <span class="tw-at">@PlasmoVet</span>
+              </span>
+            </div>
+            <span class="tw-live" data-i18n-en="Live feed" data-i18n-pt="Ao vivo">Live feed</span>
+          </div>
+
+          <div class="tw-scroll" id="tw-scroll">
+            <div class="tw-skeleton" id="tw-skeleton" aria-hidden="true">
+              <div class="sk med"></div><div class="sk short"></div><div class="sk hr"></div>
+              <div class="sk med"></div><div class="sk" style="width:70%"></div><div class="sk short"></div><div class="sk hr"></div>
+              <div class="sk med"></div><div class="sk short"></div>
+            </div>
+            <a class="twitter-timeline"
+               data-chrome="noheader nofooter noborders transparent"
+               data-tweet-limit="4"
+               data-theme="light"
+               data-link-color="#D9693F"
+               data-dnt="true"
+               href="https://twitter.com/PlasmoVet?ref_src=twsrc%5Etfw">Tweets by PlasmoVet</a>
+          </div>
+          <!-- Fallback post previews (shown if widget fails / account blocked by browser) -->
+          <template id="tw-fallback-posts">
+            <div style="display:flex;flex-direction:column;gap:16px;padding:8px 0 16px">
+              <article style="padding-bottom:16px;border-bottom:1px solid var(--line)">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Mar 2026</div>
+                <p style="font-size:13px;line-height:1.55;color:var(--ink-2)">🦟 Thrilled to share our newest paper in <em>Frontiers in Immunology</em>: diet-induced obesity reshapes mosquito gut metabolism and reduces Zika infections. A new immunometabolic axis in arbovirus transmission. <a href="#" style="color:var(--coral-deep)">#VectorBiology</a></p>
+              </article>
+              <article style="padding-bottom:16px;border-bottom:1px solid var(--line)">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Feb 2026</div>
+                <p style="font-size:13px;line-height:1.55;color:var(--ink-2)">Congratulations to Amanda Menezes on defending her PhD thesis with distinction! 👏 The first chapter is out, two more coming soon. <a href="#" style="color:var(--coral-deep)">#PhDLife</a></p>
+              </article>
+              <article>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Jan 2026</div>
+                <p style="font-size:13px;line-height:1.55;color:var(--ink-2)">New @FAPERJ grant awarded! 4 years to dig deeper into host metabolism × arbovirus vector competence. Stay tuned — open positions announced soon. <a href="#" style="color:var(--coral-deep)">#Science</a> <a href="#" style="color:var(--coral-deep)">#Brazil</a></p>
+              </article>
+            </div>
+          </template>
+
+          <div class="tw-foot">
+            <span data-i18n-en="Follow us" data-i18n-pt="Siga-nos">Follow us</span>
+            <a href="https://twitter.com/PlasmoVet" target="_blank" rel="noopener">@PlasmoVet ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunities -->
+  <section>
+    <div class="container">
+      <div class="opps">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="05 · Open positions" data-i18n-pt="05 · Oportunidades">05 · Open positions</span></div>
+          <h3 data-i18n-html data-i18n-en="Join us in <em>decoding</em> vector biology." data-i18n-pt="Junte-se a nós para <em>decifrar</em> a biologia dos vetores.">Join us in <em>decoding</em> vector biology.</h3>
+          <p data-i18n-en="We welcome applications from motivated students and postdocs interested in vector biology, immunology and immunometabolism. Funded positions available."
+             data-i18n-pt="Recebemos candidaturas de estudantes e pós-docs motivados com interesse em biologia de vetores, imunologia e imunometabolismo. Posições com bolsa disponíveis.">We welcome applications from motivated students and postdocs interested in vector biology, immunology and immunometabolism. Funded positions available.</p>
+          <div style="margin-top:28px"><a href="mailto:fabiomg@biof.ufrj.br" class="btn btn-primary"><span data-i18n-en="Get in touch" data-i18n-pt="Entrar em contato">Get in touch</span> <span class="arrow">→</span></a></div>
+        </div>
+        <div class="opps-list">
+          <div class="opp">
+            <div>
+              <div class="lbl" data-i18n-en="PhD — Trained immunity" data-i18n-pt="Doutorado — Imunidade treinada">PhD — Trained immunity</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px" data-i18n-en="CAPES / CNPq" data-i18n-pt="CAPES / CNPq">CAPES / CNPq</div>
+            </div>
+            <div class="loc">PGBTB</div>
+          </div>
+          <div class="opp">
+            <div>
+              <div class="lbl" data-i18n-en="Undergrad IC" data-i18n-pt="Iniciação científica">Undergrad IC</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px" data-i18n-en="PIBIC scholarship" data-i18n-pt="Bolsa PIBIC">PIBIC scholarship</div>
+            </div>
+            <div class="loc">UFRJ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-slot"></div>
+
+<script src="chrome.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  renderChrome('home');
+  // Hide skeleton once the Twitter iframe renders; also handle reflow on lang toggle
+  (function initTwitter() {
+    const scroll = document.getElementById('tw-scroll');
+    const skeleton = document.getElementById('tw-skeleton');
+    if (!scroll || !skeleton) return;
+    // When the widget injects an iframe, fade out the skeleton
+    const mo = new MutationObserver(() => {
+      if (scroll.querySelector('iframe')) {
+        skeleton.style.transition = 'opacity .3s ease';
+        skeleton.style.opacity = '0';
+        setTimeout(() => { skeleton.remove(); mo.disconnect(); }, 350);
+      }
+    });
+    mo.observe(scroll, { childList: true, subtree: true });
+    // Hard timeout: if widget fails (blocked, no tweets visible, etc), render fallback preview posts
+    setTimeout(() => {
+      if (!scroll.querySelector('iframe')) {
+        const tpl = document.getElementById('tw-fallback-posts');
+        const lang = (localStorage.getItem('plasmovet_lang') || 'en');
+        const note = document.createElement('div');
+        note.className = 'tw-fallback';
+        note.style.padding = '8px 0 12px';
+        note.style.textAlign = 'left';
+        note.innerHTML = (lang === 'pt'
+          ? 'Prévia dos últimos posts. Veja tudo em '
+          : 'Recent post previews. See more on ')
+          + '<a href="https://twitter.com/PlasmoVet" target="_blank" rel="noopener" style="color:var(--coral-deep)">@PlasmoVet ↗</a>';
+        skeleton.replaceWith(note);
+        if (tpl) scroll.appendChild(tpl.content.cloneNode(true));
+        mo.disconnect();
+      }
+    }, 6000);
+  })();
+</script>
+</body>
+</html>

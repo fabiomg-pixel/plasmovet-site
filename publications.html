@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Publications · Plasmovet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 80px 0 48px; }
+.page-hero h1 { font-family:'Instrument Serif',serif; font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing:-0.025em; margin-top: 18px; max-width: 16ch; }
+.page-hero h1 em { color: var(--coral); font-style: italic; }
+.page-hero p { font-size: 18px; color: var(--ink-2); line-height: 1.6; max-width: 62ch; margin-top: 28px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-bottom: 56px; }
+@media (max-width: 720px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+.stats-row .s { background: var(--paper); padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; }
+.stats-row .s .num { font-family:'Instrument Serif',serif; font-size: 56px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+.stats-row .s .num em { color: var(--coral); font-style: italic; }
+.stats-row .s .lbl { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+.year-block { margin-top: 56px; }
+.year-block h3 { font-family:'Instrument Serif',serif; font-size: 80px; line-height: 1; color: var(--coral); letter-spacing: -0.03em; font-weight: 400; margin-bottom: 20px; }
+.year-block .count { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+
+.pub-list { display: flex; flex-direction: column; }
+.pub { display: grid; grid-template-columns: 64px 1.1fr 2.6fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line-soft); align-items: start; transition: padding .3s ease; }
+.pub:hover { padding-left: 10px; }
+.pub .idx { font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--muted-2); letter-spacing: 0.08em; }
+.pub .journal { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral-deep); margin-bottom: 6px; font-weight: 500; }
+.pub .authors { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.pub .authors strong { color: var(--ink); font-weight: 600; }
+.pub h4 { font-family:'Instrument Serif',serif; font-size: 21px; line-height: 1.22; letter-spacing: -0.015em; margin-bottom: 10px; }
+.pub h4 em { font-style: italic; color: var(--ink-2); }
+.pub .vol { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--muted); margin-top: 6px; }
+@media (max-width: 900px) { .pub { grid-template-columns: 40px 1fr; gap: 14px; } .pub > *:nth-child(3) { grid-column: 2; } }
+
+.jump-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
+.jump-nav a { font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--line); border-radius: 100px; color: var(--ink-2); transition: all .2s ease; }
+.jump-nav a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.jump-nav a.coral { background: var(--coral); color: white; border-color: var(--coral); }
+.jump-nav a.coral:hover { background: var(--coral-deep); border-color: var(--coral-deep); }
+
+.featured-pub { background: var(--ink); color: var(--paper); padding: 48px; border-radius: 6px; margin-bottom: 40px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; }
+@media (max-width: 720px) { .featured-pub { grid-template-columns: 1fr; padding: 32px; } }
+.featured-pub .journal { font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 18px; }
+.featured-pub h3 { font-family:'Instrument Serif',serif; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.12; letter-spacing: -0.02em; }
+.featured-pub p { font-size: 14px; line-height: 1.7; opacity: .75; margin-top: 18px; }
+.featured-pub .badge { background: var(--coral); color: white; padding: 6px 12px; border-radius: 100px; font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; display: inline-block; margin-bottom: 16px; }
+.featured-pub .meta-grid { display: flex; flex-direction: column; gap: 16px; }
+.featured-pub .meta-grid div { border-bottom: 1px solid rgba(255,255,255,.15); padding-bottom: 10px; }
+.featured-pub .meta-grid .k { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); }
+.featured-pub .meta-grid .v { font-family:'Instrument Serif',serif; font-size: 20px; line-height: 1.2; letter-spacing: -0.015em; margin-top: 4px; }
+
+.section-title { font-family:'Instrument Serif',serif; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; margin: 64px 0 8px; }
+.section-title em { color: var(--coral); font-style: italic; }
+.section-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+
+.lattes-cta { background: var(--coral-wash); border: 1px solid var(--coral-soft); border-radius: 6px; padding: 40px; margin-top: 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; }
+@media (max-width: 720px) { .lattes-cta { grid-template-columns: 1fr; padding: 28px; } }
+.lattes-cta h3 { font-family:'Instrument Serif',serif; font-size: clamp(26px, 3vw, 34px); line-height: 1.1; letter-spacing: -0.02em; }
+.lattes-cta h3 em { color: var(--coral-deep); font-style: italic; }
+.lattes-cta p { font-size: 14px; color: var(--ink-2); margin-top: 10px; line-height: 1.6; }
+.lattes-cta .lid { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="Peer-reviewed record" data-i18n-pt="Histórico revisado por pares">Peer-reviewed record</span></div>
+      <h1 data-i18n-html data-i18n-en="<em>Publications</em> from the last five years." data-i18n-pt="<em>Publicações</em> dos últimos cinco anos.">Publications from the last five years.</h1>
+      <p data-i18n-en="Peer-reviewed articles published by Fabio M. Gomes and collaborators from 2021 onward, plus selected landmark papers across our four research programs. For the complete record, see the Lattes CV below."
+         data-i18n-pt="Artigos revisados por pares publicados por Fabio M. Gomes e colaboradores a partir de 2021, além de artigos de destaque nos quatro programas de pesquisa. Para o histórico completo, veja o Lattes abaixo.">Peer-reviewed articles published by Fabio M. Gomes and collaborators from 2021 onward, plus selected landmark papers across our four research programs. For the complete record, see the Lattes CV below.</p>
+      <nav class="jump-nav" aria-label="Sections">
+        <a href="#featured" class="coral" data-i18n-en="Latest" data-i18n-pt="Recente">Latest</a>
+        <a href="#y2025">2025</a>
+        <a href="#y2024">2024</a>
+        <a href="#y2022">2022</a>
+        <a href="#y2021">2021</a>
+        <a href="#highlights" data-i18n-en="Highlights" data-i18n-pt="Destaques">Highlights</a>
+        <a href="#lattes">Lattes</a>
+      </nav>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Featured 2025 paper -->
+    <article class="featured-pub" id="featured">
+      <div>
+        <span class="badge" data-i18n-en="Latest · 2025" data-i18n-pt="Recente · 2025">Latest · 2025</span>
+        <div class="journal">Frontiers in Immunology · 2025</div>
+        <h3>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</h3>
+        <p data-i18n-en="Blood from diet-induced obese and diabetic mice remodels Aedes aegypti gut metabolism and reduces Zika virus infections — first mechanistic evidence that host metabolic disease alters arbovirus vector competence."
+           data-i18n-pt="Sangue de camundongos obesos e diabéticos induzidos por dieta remodela o metabolismo intestinal de Aedes aegypti e reduz infecções por Zika — primeira evidência mecanística de que doença metabólica do hospedeiro altera a competência vetorial.">Blood from diet-induced obese and diabetic mice remodels Aedes aegypti gut metabolism and reduces Zika virus infections — first mechanistic evidence that host metabolic disease alters arbovirus vector competence.</p>
+      </div>
+      <div class="meta-grid">
+        <div><div class="k" data-i18n-en="First author" data-i18n-pt="Primeiro autor">First author</div><div class="v">Menezes A.</div></div>
+        <div><div class="k" data-i18n-en="Senior author" data-i18n-pt="Sênior">Senior author</div><div class="v">Gomes F.M.</div></div>
+        <div><div class="k" data-i18n-en="Journal" data-i18n-pt="Periódico">Journal</div><div class="v">Front. Immunol. · v.16 · 2025</div></div>
+      </div>
+    </article>
+
+    <!-- 2025 -->
+    <div class="year-block" id="y2025">
+      <h3>2025</h3>
+      <div class="count" data-i18n-en="1 article" data-i18n-pt="1 artigo">1 article</div>
+      <div class="pub-list">
+        <div class="pub">
+          <div class="idx">01</div>
+          <div>
+            <div class="journal">Frontiers in Immunology</div>
+            <div class="authors">Menezes A, Walter-Nuno AB, Costa-Bartuli E, Moreira D, El-Bacha T, Méndez AP, Amarante A, Kistenmacker N, Huaman P, Busch M, Pereira J, Ramos I, Atella G, Parente T, Paiva-Silva G, Miranda K, Zancan P, Sola-Penna M, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</h4>
+            <div class="vol">Front. Immunol., v.16, 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-block" id="y2024">
+      <h3>2024</h3>
+      <div class="count" data-i18n-en="3 articles" data-i18n-pt="3 artigos">3 articles</div>
+      <div class="pub-list">
+        <div class="pub">
+          <div class="idx">02</div>
+          <div>
+            <div class="journal">Parasites &amp; Vectors</div>
+            <div class="authors">Menezes A, Peixoto M, Silva M, Costa-Bartuli E, Oliveira CL, Walter-Nuno AB, Kistenmacker NC, Pereira J, Ramos I, Paiva-Silva GO, Atella GC, Zancan P, Sola-Penna M, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>Western diet consumption by host vertebrate promotes altered gene expression on <em>Aedes aegypti</em> reducing its lifespan and increasing fertility following blood feeding.</h4>
+            <div class="vol">Parasites &amp; Vectors, v.17, 2024</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">03</div>
+          <div>
+            <div class="journal">J. Comp. Physiology B</div>
+            <div class="authors">Silva RCMC, Ramos IB, Travassos LH, Mendez APG, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>Evolution of innate immunity: lessons from mammalian models shaping our current view of insect immunity.</h4>
+            <div class="vol">J. Comp. Physiol. B, 2024</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">04</div>
+          <div>
+            <div class="journal">Journal of Molecular Evolution</div>
+            <div class="authors">Silva RCMC, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>Evolution of the major components of innate immunity in animals.</h4>
+            <div class="vol">J. Mol. Evol., 2024</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">05</div>
+          <div>
+            <div class="journal">Frontiers in Physiology</div>
+            <div class="authors">Santos-Araujo S, <strong>Gomes F</strong>, Carvalho-Kelly LF, Meyer-Fernandes JR, Gondim KC, Ramos I</div>
+          </div>
+          <div>
+            <h4>Autophagy assists the insect vector <em>Rhodnius prolixus</em> in mobilizing TAG reserves under forced flight activity.</h4>
+            <div class="vol">Front. Physiol., v.15, 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="year-block" id="y2022">
+      <h3>2022</h3>
+      <div class="count" data-i18n-en="6 articles" data-i18n-pt="6 artigos">6 articles</div>
+      <div class="pub-list">
+        <div class="pub">
+          <div class="idx">06</div>
+          <div>
+            <div class="journal">PLoS Pathogens</div>
+            <div class="authors"><strong>Gomes FM</strong>, Silva M, Molina-Cruz A, Barillas-Mury C</div>
+          </div>
+          <div>
+            <h4>Molecular mechanisms of insect immune memory and pathogen transmission.</h4>
+            <div class="vol">PLoS Pathog., v.18, e1010939, 2022</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">07</div>
+          <div>
+            <div class="journal">PLoS Pathogens</div>
+            <div class="authors">Vila T, Frases S, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>Lessons from protozoans: phosphate sensing and polyphosphate storage in fungi.</h4>
+            <div class="vol">PLoS Pathog., v.18, e1010298, 2022</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">08</div>
+          <div>
+            <div class="journal">Lancet Regional Health — Americas</div>
+            <div class="authors"><strong>Gomes FM</strong>, Bahia AC</div>
+          </div>
+          <div>
+            <h4>Implications of vector surveillance for arbovirus epidemiology in Miami-Dade County, Florida.</h4>
+            <div class="vol">Lancet Reg. Health Am., v.11, 100310, 2022</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">09</div>
+          <div>
+            <div class="journal">Mol. Reproduction &amp; Development</div>
+            <div class="authors">Ramos I, Machado E, Masuda H, <strong>Gomes F</strong></div>
+          </div>
+          <div>
+            <h4>Open questions on the functional biology of the yolk granules during embryo development.</h4>
+            <div class="vol">Mol. Reprod. Dev., 2022</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">10</div>
+          <div>
+            <div class="journal">Frontiers in Cellular &amp; Infection Microbiology</div>
+            <div class="authors"><strong>Gomes F</strong>, Alfson K, Junqueira M (Editorial)</div>
+          </div>
+          <div>
+            <h4>The application of OMICS technologies to interrogate host–virus interactions.</h4>
+            <div class="vol">Front. Cell. Infect. Microbiol., v.12, 2022</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">11</div>
+          <div>
+            <div class="journal">Frontiers in Physiology</div>
+            <div class="authors"><strong>Gomes FM</strong>, Baranzini N, Grimaldi A, Lopes-Torres EJ (Editorial)</div>
+          </div>
+          <div>
+            <h4>Advances on the physiology and cell biology of invertebrate parasites.</h4>
+            <div class="vol">Front. Physiol., v.13, 2022</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="year-block" id="y2021">
+      <h3>2021</h3>
+      <div class="count" data-i18n-en="3 articles" data-i18n-pt="3 artigos">3 articles</div>
+      <div class="pub-list">
+        <div class="pub">
+          <div class="idx">12</div>
+          <div>
+            <div class="journal">PNAS</div>
+            <div class="authors"><strong>Gomes FM</strong>, Tyner MDW, Barletta ABF, Saha B, Yenkoidiok-Douti L, Canepa GE, Molina-Cruz A, Barillas-Mury C</div>
+          </div>
+          <div>
+            <h4>Double peroxidase and histone acetyltransferase AgTip60 maintain innate immune memory in primed mosquitoes.</h4>
+            <div class="vol">PNAS, v.118, e2114242118, 2021</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">13</div>
+          <div>
+            <div class="journal">Frontiers in Physiology (Editorial)</div>
+            <div class="authors">Ramirez JL, Ramos I, <strong>Gomes FM</strong></div>
+          </div>
+          <div>
+            <h4>Systemic coordination of invertebrate homeostasis.</h4>
+            <div class="vol">Front. Physiol., v.12, 736185, 2021</div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="idx">14</div>
+          <div>
+            <div class="journal">J. Venomous Animals &amp; Toxins</div>
+            <div class="authors">Costa Ramos LF, Rangel J, Andrade G, Lixa C, Castilho L, Nogueira F, Pinheiro A, <strong>Gomes F</strong>, Anobom C, Almeida R, Oliveira D</div>
+          </div>
+          <div>
+            <h4>Identification and recombinant expression of an antimicrobial peptide (cecropin B-like) from soybean pest <em>Anticarsia gemmatalis</em>.</h4>
+            <div class="vol">J. Venom. Anim. Toxins, v.27, e20200127, 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Landmark / highlight papers -->
+    <h2 class="section-title" id="highlights" data-i18n-html data-i18n-en="Landmark <em>highlight</em> papers." data-i18n-pt="Artigos de <em>destaque</em>.">Landmark <em>highlight</em> papers.</h2>
+    <p class="section-sub" data-i18n-en="Foundational publications across our four research programs, selected from the full Lattes record."
+       data-i18n-pt="Publicações fundacionais nos quatro programas de pesquisa, selecionadas do histórico completo do Lattes.">Foundational publications across our four research programs, selected from the full Lattes record.</p>
+
+    <div class="pub-list">
+      <div class="pub">
+        <div class="idx">H · 01</div>
+        <div>
+          <div class="journal">PNAS · 2017</div>
+          <div class="authors"><strong>Gomes FM</strong>, Hixson BL, Tyner MDW, Ramirez JL, Canepa GE, Alves e Silva TL, Molina-Cruz A, Keita M, Kane F, Traoré B, Sogoba N, Barillas-Mury C</div>
+        </div>
+        <div>
+          <h4>Effect of naturally occurring <em>Wolbachia</em> in mosquitoes from Mali on malaria transmission.</h4>
+          <div class="vol">PNAS, p.201716181, 2017 · 78 citations</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="idx">H · 02</div>
+        <div>
+          <div class="journal">PLoS Pathogens · 2018</div>
+          <div class="authors"><strong>Gomes FM</strong>, Barillas-Mury C</div>
+        </div>
+        <div>
+          <h4>Infection of anopheline mosquitoes with <em>Wolbachia</em>: implications for malaria control.</h4>
+          <div class="vol">PLoS Pathog., v.14, e1007333, 2018 · 28 citations</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="idx">H · 03</div>
+        <div>
+          <div class="journal">European J. Histochemistry · 2013</div>
+          <div class="authors"><strong>Gomes FM</strong>, Ramos IB, Wendt C, Girard-Dias W, de Souza W, Machado EA, Miranda K</div>
+        </div>
+        <div>
+          <h4>New insights into in situ microscopic visualization and quantification of inorganic polyphosphate stores by DAPI-staining.</h4>
+          <div class="vol">Eur. J. Histochem., v.57, e34, 2013 · 58 citations</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="idx">H · 04</div>
+        <div>
+          <div class="journal">Cell &amp; Tissue Research · 2013</div>
+          <div class="authors"><strong>Gomes FM</strong>, Carvalho DB, Machado EA, Miranda K</div>
+        </div>
+        <div>
+          <h4>Ultrastructural and functional analysis of secretory goblet cells in the midgut of the lepidopteran <em>Anticarsia gemmatalis</em>.</h4>
+          <div class="vol">Cell Tissue Res., v.352, 2013 · 33 citations</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="idx">H · 05</div>
+        <div>
+          <div class="journal">J. Cellular Physiology · 2009</div>
+          <div class="authors"><strong>Gomes FM</strong>, Oliveira DMP, Motta LS, Ramos IB, Miranda KM, Machado EA</div>
+        </div>
+        <div>
+          <h4>Inorganic polyphosphate inhibits an aspartic protease-like activity in the eggs of <em>Rhodnius prolixus</em>.</h4>
+          <div class="vol">J. Cell. Physiol., v.222, 2009 · 21 citations</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="idx">H · 06</div>
+        <div>
+          <div class="journal">Scientific Reports · 2020</div>
+          <div class="authors">Silva RCMC, Fox EGP, <strong>Gomes FM</strong>, Feijó DF, Ramos I, Koeller CM, Costa TFR, Rodrigues NS, Lima AP, Atella GC, Miranda K, Schoijet AC, Alonso GD, Machado EA, Heise N</div>
+        </div>
+        <div>
+          <h4>Venom alkaloids against Chagas disease parasite: search for effective therapies.</h4>
+          <div class="vol">Sci. Rep., v.10, 10642, 2020 · 14 citations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lattes CTA -->
+    <div class="lattes-cta" id="lattes">
+      <div>
+        <h3 data-i18n-html data-i18n-en="The full record is on <em>Lattes</em>." data-i18n-pt="O histórico completo está no <em>Lattes</em>.">The full record is on <em>Lattes</em>.</h3>
+        <p data-i18n-en="Complete bibliography, book chapters, orientations and awards — updated directly by CNPq/Lattes." data-i18n-pt="Bibliografia completa, capítulos de livro, orientações e prêmios — atualizados diretamente pelo CNPq/Lattes.">Complete bibliography, book chapters, orientations and awards — updated directly by CNPq/Lattes.</p>
+        <div class="lid">Lattes ID · 8594781726473810</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="https://lattes.cnpq.br/8594781726473810" target="_blank" rel="noopener" class="btn btn-primary"><span data-i18n-en="Open Lattes CV" data-i18n-pt="Abrir Lattes">Open Lattes CV</span> <span class="arrow">↗</span></a>
+        <a href="https://www.ncbi.nlm.nih.gov/myncbi/fabio.gomes.2/bibliography/public/" target="_blank" rel="noopener" class="btn btn-ghost" style="background:transparent"><span data-i18n-en="PubMed bibliography" data-i18n-pt="Bibliografia PubMed">PubMed bibliography</span> <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="footer-slot"></div>
+<script src="chrome.js"></script>
+<script>renderChrome('publications');</script>
+</body>
+</html>

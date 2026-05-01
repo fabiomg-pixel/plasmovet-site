@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>News · Plasmovet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 80px 0 48px; }
+.page-hero h1 { font-family:'Instrument Serif',serif; font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing:-0.025em; margin-top: 18px; max-width: 16ch; }
+.page-hero h1 em { color: var(--coral); font-style: italic; }
+.page-hero p { font-size: 18px; color: var(--ink-2); line-height: 1.6; max-width: 56ch; margin-top: 28px; }
+
+.feat-news { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; padding: 56px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 64px; align-items: start; }
+@media (max-width: 900px) { .feat-news { grid-template-columns: 1fr; } }
+.feat-news .thumb { aspect-ratio: 4/3; border-radius: 4px; background: var(--paper-2); position: relative; overflow: hidden; border: 1px solid var(--line); }
+.feat-news .thumb svg { width: 100%; height: 100%; }
+.feat-news .eyebrow { margin-bottom: 18px; }
+.feat-news h2 { font-family:'Instrument Serif',serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
+.feat-news h2 em { color: var(--coral); font-style: italic; }
+.feat-news p { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+.feat-news .meta { font-family:'JetBrains Mono',monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 24px; display: flex; gap: 20px; }
+
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 72px; }
+@media (max-width: 900px) { .news-grid { grid-template-columns: 1fr; } }
+.news-card { background: white; border: 1px solid var(--line); border-radius: 4px; display: flex; flex-direction: column; overflow: hidden; transition: all .3s ease; }
+.news-card:hover { border-color: var(--coral); transform: translateY(-2px); }
+.news-card .thumb { aspect-ratio: 4/3; background: var(--paper-2); position: relative; }
+.news-card .thumb svg { width: 100%; height: 100%; }
+.news-card .body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.news-card .date { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.news-card h4 { font-family:'Instrument Serif',serif; font-size: 22px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 10px; }
+.news-card p { font-size: 13px; color: var(--ink-2); line-height: 1.6; flex: 1; }
+.news-card .foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+
+.media-section { background: var(--ink); color: var(--paper); padding: 80px 0; }
+.media-section h3 { font-family:'Instrument Serif',serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; max-width: 18ch; }
+.media-section h3 em { color: var(--coral); font-style: italic; }
+.media-list { margin-top: 48px; border-top: 1px solid rgba(255,255,255,.15); }
+.media-item { display: grid; grid-template-columns: 100px 1fr 1fr 120px; gap: 32px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.1); align-items: center; transition: padding .3s ease; cursor: pointer; }
+.media-item:hover { padding-left: 10px; }
+.media-item .date { font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); }
+.media-item .outlet { font-family:'Instrument Serif',serif; font-size: 22px; letter-spacing: -0.015em; }
+.media-item h5 { font-family:'Inter',sans-serif; font-size: 14px; line-height: 1.5; font-weight: 400; opacity: .85; }
+.media-item .arrow { text-align: right; font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: .6; }
+@media (max-width: 720px) { .media-item { grid-template-columns: 1fr; gap: 8px; } }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="News &amp; updates" data-i18n-pt="Notícias e atualizações">News &amp; updates</span></div>
+      <h1 data-i18n-html data-i18n-en="From the <em>lab</em> &amp; beyond." data-i18n-pt="Do <em>laboratório</em> e além.">From the <em>lab</em> &amp; beyond.</h1>
+      <p data-i18n-en="Lab announcements, funding news, thesis defenses, conference coverage and media appearances."
+         data-i18n-pt="Anúncios do laboratório, notícias de financiamento, defesas, cobertura de conferências e aparições na mídia.">Lab announcements, funding news, thesis defenses, conference coverage and media appearances.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <article class="feat-news">
+      <div class="thumb">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern id="fn1" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
+          <rect width="400" height="300" fill="url(#fn1)"/>
+          <rect x="60" y="80" width="280" height="160" fill="#F3855C" opacity="0.1"/>
+          <circle cx="200" cy="160" r="60" fill="none" stroke="#F3855C" stroke-width="1.2"/>
+          <circle cx="200" cy="160" r="30" fill="#F3855C" opacity="0.5"/>
+          <text x="200" y="60" text-anchor="middle" font-family="Instrument Serif,serif" font-size="14" fill="#141310">Menezes et al. · 2025</text>
+          <text x="200" y="270" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6E6960" letter-spacing="1">FRONT. IMMUNOL. · DOI 10.3389/FIMMU.2025</text>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow coral" data-i18n-en="Feature · March 2026" data-i18n-pt="Destaque · Março 2026">Feature · March 2026</div>
+        <h2 data-i18n-html data-i18n-en="Amanda Menezes defends PhD with <em>distinction</em>." data-i18n-pt="Amanda Menezes defende doutorado com <em>menção honrosa</em>.">Amanda Menezes defends PhD with <em>distinction</em>.</h2>
+        <p data-i18n-en="Amanda Menezes successfully defended her doctoral thesis, 'Host immunometabolic modulation of Aedes aegypti vector competence for Zika virus.' The research, which introduces a new conceptual framework in arbovirus transmission, was awarded distinction by the examining committee."
+           data-i18n-pt="Amanda Menezes defendeu com sucesso sua tese de doutorado, 'Modulação imunometabólica do hospedeiro sobre a competência vetorial de Aedes aegypti para Zika vírus.' A pesquisa, que introduz um novo arcabouço conceitual na transmissão de arbovírus, recebeu menção honrosa.">Amanda Menezes successfully defended her doctoral thesis, 'Host immunometabolic modulation of Aedes aegypti vector competence for Zika virus.' The research, which introduces a new conceptual framework in arbovirus transmission, was awarded distinction by the examining committee.</p>
+        <div class="meta">
+          <span>MAR 28 · 2026</span>
+          <span data-i18n-en="PGBTB · UFRJ" data-i18n-pt="PGBTB · UFRJ">PGBTB · UFRJ</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#FBE6DC"/><circle cx="200" cy="150" r="80" fill="none" stroke="#F3855C" stroke-width="1.5" stroke-dasharray="3 3"/><text x="200" y="157" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#D9693F" letter-spacing="2">FAPERJ · 2026</text></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="FEB 18 · 2026" data-i18n-pt="FEV 18 · 2026">FEB 18 · 2026</div>
+          <h4 data-i18n-en="FAPERJ grant awarded: host metabolism &amp; arbovirus transmission." data-i18n-pt="FAPERJ aprova edital: metabolismo do hospedeiro e transmissão de arbovírus.">FAPERJ grant awarded: host metabolism &amp; arbovirus transmission.</h4>
+          <p data-i18n-en="Four-year funded project to investigate how diet-induced metabolic states shape mosquito vector competence."
+             data-i18n-pt="Projeto de quatro anos para investigar como estados metabólicos induzidos por dieta moldam a competência vetorial.">Four-year funded project to investigate how diet-induced metabolic states shape mosquito vector competence.</p>
+          <div class="foot"><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="Funding" data-i18n-pt="Financiamento">Funding</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#F2EDE6"/><g stroke="#141310" stroke-width="1" fill="none"><path d="M60 200 Q140 100 220 170 Q300 240 340 120"/></g><g fill="#F3855C"><circle cx="60" cy="200" r="3"/><circle cx="140" cy="140" r="3"/><circle cx="220" cy="170" r="3"/><circle cx="300" cy="210" r="3"/><circle cx="340" cy="120" r="3"/></g><text x="200" y="280" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6E6960" letter-spacing="1.5">DATA · COLLABORATIVE STUDY</text></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="JAN 22 · 2026" data-i18n-pt="JAN 22 · 2026">JAN 22 · 2026</div>
+          <h4 data-i18n-en="Lab featured in Folha de S.Paulo on climate &amp; mosquito immunity." data-i18n-pt="Laboratório é destaque na Folha de S.Paulo sobre clima e imunidade do mosquito.">Lab featured in Folha de S.Paulo on climate &amp; mosquito immunity.</h4>
+          <p data-i18n-en="Dr. Gomes is quoted as a leading Brazilian voice on warming climates and shifting transmission dynamics."
+             data-i18n-pt="Dr. Gomes é citado como voz líder no Brasil sobre o aquecimento climático e a dinâmica de transmissão.">Dr. Gomes is quoted as a leading Brazilian voice on warming climates and shifting transmission dynamics.</p>
+          <div class="foot"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Media" data-i18n-pt="Mídia">Media</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#EFEAE1"/><rect x="140" y="90" width="120" height="150" fill="none" stroke="#141310" stroke-width="1"/><rect x="140" y="90" width="120" height="150" fill="#F3855C" opacity="0.1"/><g font-family="Instrument Serif,serif" fill="#141310"><text x="200" y="130" text-anchor="middle" font-size="14">Kickoff</text><text x="200" y="160" text-anchor="middle" font-size="22">2026</text></g></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="JAN 08 · 2026" data-i18n-pt="JAN 08 · 2026">JAN 08 · 2026</div>
+          <h4 data-i18n-en="New cohort of PIBIC undergraduates joins the lab." data-i18n-pt="Nova turma de alunos de IC (PIBIC) se junta ao laboratório.">New cohort of PIBIC undergraduates joins the lab.</h4>
+          <p data-i18n-en="Four new undergraduate research fellows will work on vector competence, microscopy pipelines and evolutionary immunology."
+             data-i18n-pt="Quatro novos alunos de iniciação científica trabalharão em competência vetorial, microscopia e imunologia evolutiva.">Four new undergraduate research fellows will work on vector competence, microscopy pipelines and evolutionary immunology.</p>
+          <div class="foot"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Lab news" data-i18n-pt="Laboratório">Lab news</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#FAF7F3"/><g stroke="#141310" stroke-width="0.8" fill="none"><circle cx="200" cy="150" r="90"/><circle cx="200" cy="150" r="60"/><circle cx="200" cy="150" r="30"/></g><circle cx="200" cy="60" r="4" fill="#F3855C"/><circle cx="290" cy="150" r="4" fill="#F3855C"/><circle cx="200" cy="240" r="4" fill="#F3855C"/><circle cx="110" cy="150" r="4" fill="#F3855C"/></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="DEC 10 · 2025" data-i18n-pt="DEZ 10 · 2025">DEC 10 · 2025</div>
+          <h4 data-i18n-en="Vector Insects Platform reaches 300K mosquitoes reared / year." data-i18n-pt="Plataforma de Insetos Vetores atinge 300 mil mosquitos criados por ano.">Vector Insects Platform reaches 300K mosquitoes reared / year.</h4>
+          <p data-i18n-en="A milestone for the IBCCF platform supporting multiple research groups across UFRJ."
+             data-i18n-pt="Marco para a plataforma do IBCCF que apoia múltiplos grupos de pesquisa da UFRJ.">A milestone for the IBCCF platform supporting multiple research groups across UFRJ.</p>
+          <div class="foot"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Infrastructure" data-i18n-pt="Infraestrutura">Infrastructure</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#141310"/><g stroke="#F3855C" stroke-width="0.8" fill="none" opacity="0.6"><path d="M50 150 Q150 80 250 160 Q350 240 400 170"/><path d="M50 200 Q150 130 250 210 Q350 290 400 220"/></g><text x="200" y="170" text-anchor="middle" font-family="Instrument Serif,serif" font-size="32" fill="#FAF7F3">Keystone</text><text x="200" y="200" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#F3855C" letter-spacing="2">SYMPOSIUM · DENVER</text></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="NOV 15 · 2025" data-i18n-pt="NOV 15 · 2025">NOV 15 · 2025</div>
+          <h4 data-i18n-en="Invited talk at Keystone Vector Biology Symposium." data-i18n-pt="Palestra convidada no Keystone Vector Biology Symposium.">Invited talk at Keystone Vector Biology Symposium.</h4>
+          <p data-i18n-en="Dr. Gomes presented the lab's recent work on trained immunity and immunometabolism to an international audience."
+             data-i18n-pt="Dr. Gomes apresentou o trabalho recente sobre imunidade treinada e imunometabolismo a uma audiência internacional.">Dr. Gomes presented the lab's recent work on trained immunity and immunometabolism to an international audience.</p>
+          <div class="foot"><span class="chip"><span class="chip-dot"></span><span data-i18n-en="Conference" data-i18n-pt="Conferência">Conference</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="300" fill="#F2EDE6"/><g stroke="#141310" stroke-width="1" fill="none"><rect x="120" y="70" width="160" height="180"/><path d="M120 130 L280 130"/><path d="M120 190 L280 190"/></g><text x="200" y="112" text-anchor="middle" font-family="Instrument Serif,serif" font-size="16">cover</text><text x="200" y="170" text-anchor="middle" font-family="Instrument Serif,serif" font-size="22" fill="#F3855C">PNAS</text><text x="200" y="220" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6E6960">RETROSPECTIVE</text></svg>
+        </div>
+        <div class="body">
+          <div class="date" data-i18n-en="OCT 03 · 2025" data-i18n-pt="OUT 03 · 2025">OCT 03 · 2025</div>
+          <h4 data-i18n-en="2021 PNAS paper named among most-cited in trained immunity." data-i18n-pt="Artigo PNAS 2021 é listado entre os mais citados em imunidade treinada.">2021 PNAS paper named among most-cited in trained immunity.</h4>
+          <p data-i18n-en="Our landmark paper on AgTip60 continues to shape the emerging field of invertebrate immune memory."
+             data-i18n-pt="Nosso artigo sobre AgTip60 segue moldando o campo emergente de memória imune em invertebrados.">Our landmark paper on AgTip60 continues to shape the emerging field of invertebrate immune memory.</p>
+          <div class="foot"><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="Recognition" data-i18n-pt="Reconhecimento">Recognition</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--muted)" data-i18n-en="Read →" data-i18n-pt="Ler →">Read →</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <section class="media-section">
+    <div class="container">
+      <div class="section-label"><span class="bar" style="background:var(--coral)"></span><span class="eyebrow" style="color:var(--coral)" data-i18n-en="Media &amp; outreach" data-i18n-pt="Mídia e divulgação">Media &amp; outreach</span></div>
+      <h3 data-i18n-html data-i18n-en="Science in the <em>public</em> eye." data-i18n-pt="Ciência aos olhos do <em>público</em>.">Science in the <em>public</em> eye.</h3>
+      <div class="media-list">
+        <div class="media-item">
+          <div class="date" data-i18n-en="JAN · 2026" data-i18n-pt="JAN · 2026">JAN · 2026</div>
+          <div class="outlet">Folha de S.Paulo</div>
+          <h5 data-i18n-en="Interview: Climate change and the future of arbovirus transmission in Brazil." data-i18n-pt="Entrevista: Mudança climática e o futuro da transmissão de arbovírus no Brasil.">Interview: Climate change and the future of arbovirus transmission in Brazil.</h5>
+          <div class="arrow">→</div>
+        </div>
+        <div class="media-item">
+          <div class="date" data-i18n-en="NOV · 2025" data-i18n-pt="NOV · 2025">NOV · 2025</div>
+          <div class="outlet">Nature Podcast</div>
+          <h5 data-i18n-en="Guest: What mosquitoes can teach us about immune memory." data-i18n-pt="Convidado: O que os mosquitos podem ensinar sobre memória imune.">Guest: What mosquitoes can teach us about immune memory.</h5>
+          <div class="arrow">→</div>
+        </div>
+        <div class="media-item">
+          <div class="date" data-i18n-en="SEP · 2025" data-i18n-pt="SET · 2025">SEP · 2025</div>
+          <div class="outlet">Pesquisa FAPESP</div>
+          <h5 data-i18n-en="Feature on lab's host-metabolism research line." data-i18n-pt="Reportagem sobre a linha de imunometabolismo do laboratório.">Feature on lab's host-metabolism research line.</h5>
+          <div class="arrow">→</div>
+        </div>
+        <div class="media-item">
+          <div class="date" data-i18n-en="JUL · 2025" data-i18n-pt="JUL · 2025">JUL · 2025</div>
+          <div class="outlet">O Globo</div>
+          <h5 data-i18n-en="Op-ed: Why basic science matters for arbovirus control." data-i18n-pt="Artigo: Por que a ciência básica importa para o controle de arbovírus.">Op-ed: Why basic science matters for arbovirus control.</h5>
+          <div class="arrow">→</div>
+        </div>
+        <div class="media-item">
+          <div class="date" data-i18n-en="APR · 2025" data-i18n-pt="ABR · 2025">APR · 2025</div>
+          <div class="outlet">UFRJ Divulga</div>
+          <h5 data-i18n-en="Lab profile: Vector biology in the era of arboviruses." data-i18n-pt="Perfil do laboratório: Biologia de vetores na era dos arbovírus.">Lab profile: Vector biology in the era of arboviruses.</h5>
+          <div class="arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-slot"></div>
+<script src="chrome.js"></script>
+<script>renderChrome('news');</script>
+</body>
+</html>
