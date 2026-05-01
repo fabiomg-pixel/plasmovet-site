@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs / temp
+*.log
+.cache/
+tmp/
+
+# Node (if anyone adds tooling later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python (preview servers)
+__pycache__/
+*.pyc
+
+# Build artifacts (none expected for this static site, but just in case)
+dist/
+build/
+.parcel-cache/
+
+# Local-only project scaffolding
+uploads/
+scraps/
