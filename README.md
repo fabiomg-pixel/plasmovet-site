@@ -1,9 +1,9 @@
-# PlasmoVet — Gomes Lab
+# PlasmoVet
 
 > Decoding immunity & metabolism in disease vectors.
 > Decifrando imunidade e metabolismo em vetores de doenças.
 
-Static website for the **Gomes Lab / PlasmoVet** group — Instituto de Biofísica Carlos Chagas Filho (IBCCF), Universidade Federal do Rio de Janeiro (UFRJ).
+Static website for the **PlasmoVet** group — Instituto de Biofísica Carlos Chagas Filho (IBCCF), Universidade Federal do Rio de Janeiro (UFRJ).
 
 🌐 **Live:** _set after enabling GitHub Pages_
 📍 **Lab:** IBCCF · UFRJ · Rio de Janeiro
@@ -66,7 +66,7 @@ assets/             ← logo, hero illustration, photos
 
 ## Português
 
-Site bilíngue (EN/PT) do grupo **Gomes Lab / PlasmoVet** no IBCCF/UFRJ. Cobre linhas de pesquisa, equipe, publicações, notícias e oportunidades abertas (pós-doc, doutorado, iniciação científica).
+Site bilíngue (EN/PT) do grupo **PlasmoVet** no IBCCF/UFRJ. Cobre linhas de pesquisa, equipe, publicações, notícias e oportunidades abertas (pós-doc, doutorado, iniciação científica).
 
 Construído em HTML + CSS puros, sem build step. Para visualizar localmente, basta abrir `index.html` ou rodar um servidor estático (ver comandos acima).
 
@@ -91,4 +91,4 @@ A custom domain can be added by editing the `CNAME` file (currently empty/unused
 ## License
 
 Site code: [MIT](./LICENSE).
-Lab content (text, photos, figures): © Gomes Lab / IBCCF-UFRJ — all rights reserved unless otherwise noted.
+Lab content (text, photos, figures): © PlasmoVet / IBCCF-UFRJ — all rights reserved unless otherwise noted.

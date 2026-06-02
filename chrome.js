@@ -10,7 +10,7 @@ const STRINGS = {
       tagline: 'Vector biology & immunometabolism at the Instituto de Biofísica Carlos Chagas Filho, UFRJ.',
       nav: 'Navigation', resources: 'Resources', contact: 'Contact',
       addr: 'IBCCF · CCS, Bloco G<br>Cidade Universitária, Ilha do Fundão<br>Rio de Janeiro, RJ · Brasil',
-      rights: '© 2026 Plasmovet · Gomes Lab · IBCCF/UFRJ'
+      rights: '© 2026 PlasmoVet · IBCCF/UFRJ'
     }
   },
   pt: {
@@ -19,7 +19,7 @@ const STRINGS = {
       tagline: 'Biologia de vetores e imunometabolismo no Instituto de Biofísica Carlos Chagas Filho, UFRJ.',
       nav: 'Navegação', resources: 'Recursos', contact: 'Contato',
       addr: 'IBCCF · CCS, Bloco G<br>Cidade Universitária, Ilha do Fundão<br>Rio de Janeiro, RJ · Brasil',
-      rights: '© 2026 Plasmovet · Gomes Lab · IBCCF/UFRJ'
+      rights: '© 2026 PlasmoVet · IBCCF/UFRJ'
     }
   }
 };
@@ -56,7 +56,7 @@ function renderNav(active) {
         <a href="index.html" class="brand" style="gap:14px;align-items:center">
           ${LOGO_IMG}
           <span class="brand-text" style="border-left:1px solid var(--line);padding-left:14px">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);font-weight:500">Gomes Lab</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);font-weight:500">PlasmoVet</span>
             <small>IBCCF · UFRJ</small>
           </span>
         </a>
@@ -131,8 +131,8 @@ function renderFooter() {
           </div>
         </div>
         <div class="foot-bottom">
-          <span data-i18n-en="© 2026 Plasmovet · Gomes Lab · IBCCF/UFRJ"
-                data-i18n-pt="© 2026 Plasmovet · Gomes Lab · IBCCF/UFRJ">© 2026 Plasmovet · Gomes Lab · IBCCF/UFRJ</span>
+          <span data-i18n-en="© 2026 PlasmoVet · IBCCF/UFRJ"
+                data-i18n-pt="© 2026 PlasmoVet · IBCCF/UFRJ">© 2026 PlasmoVet · IBCCF/UFRJ</span>
           <span></span>
         </div>
       </div>
