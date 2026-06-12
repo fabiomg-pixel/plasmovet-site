@@ -46,6 +46,35 @@ function applyLang() {
   });
 }
 
+/* ===== THEME (light / dark) ===== */
+function currentTheme() {
+  try {
+    const saved = localStorage.getItem('plasmovet_theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch (e) { return 'light'; }
+}
+function applyTheme() {
+  const t = currentTheme();
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('.theme-toggle, .mobile-theme').forEach(b => b.setAttribute('aria-pressed', String(t === 'dark')));
+  // Keep the embedded Twitter timeline in step with the site theme
+  const tw = document.querySelectorAll('.twitter-timeline');
+  if (tw.length) {
+    tw.forEach(a => a.setAttribute('data-theme', t));
+    if (window.twttr && twttr.widgets && typeof twttr.widgets.load === 'function') {
+      try { twttr.widgets.load(); } catch (e) {}
+    }
+  }
+}
+function setTheme(t) {
+  try { localStorage.setItem('plasmovet_theme', t); } catch (e) {}
+  applyTheme();
+}
+function toggleTheme() {
+  setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+}
+
 function renderNav(active) {
   const l = currentLang();
   const S = STRINGS[l].nav;
@@ -66,6 +95,10 @@ function renderNav(active) {
           ${link('team','team.html','Team','Equipe')}
           ${link('publications','publications.html','Publications','Publicações')}
           ${link('news','news.html','News','Notícias')}
+          <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.2 17.2l1.4 1.4M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+          </button>
           <div class="lang-toggle" role="group" aria-label="Language">
             <button data-lang="en" onclick="setLang('en')">EN</button>
             <button data-lang="pt" onclick="setLang('pt')">PT</button>
@@ -74,18 +107,25 @@ function renderNav(active) {
         <button class="menu-btn" aria-label="Menu" onclick="toggleMobileMenu()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       </div>
     </nav>
-    <div id="mobile-menu" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#FAF7F3;z-index:9999;display:flex;flex-direction:column;padding:80px 32px 32px;gap:32px;transform:translateY(-100%);transition:transform .35s cubic-bezier(.6,0,.3,1);visibility:hidden;pointer-events:none;opacity:1">
-      <button aria-label="Close" onclick="toggleMobileMenu()" style="position:absolute;top:18px;right:24px;background:none;border:0;cursor:pointer;color:#141310;padding:10px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div id="mobile-menu" style="position:fixed;top:0;left:0;right:0;bottom:0;background:var(--paper);z-index:9999;display:flex;flex-direction:column;padding:80px 32px 32px;gap:24px;transform:translateY(-100%);transition:transform .35s cubic-bezier(.6,0,.3,1);visibility:hidden;pointer-events:none;opacity:1">
+      <button aria-label="Close" onclick="toggleMobileMenu()" style="position:absolute;top:18px;right:24px;background:none;border:0;cursor:pointer;color:var(--ink);padding:10px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       <div style="display:flex;flex-direction:column;gap:4px;margin-top:20px">
-        <a href="index.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:#141310;padding:12px 0;border-bottom:1px solid #E5DFD4;line-height:1.1;text-decoration:none">${l==='pt'?'Início':'Home'}</a>
-        <a href="research.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:#141310;padding:12px 0;border-bottom:1px solid #E5DFD4;line-height:1.1;text-decoration:none">${l==='pt'?'Pesquisa':'Research'}</a>
-        <a href="team.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:#141310;padding:12px 0;border-bottom:1px solid #E5DFD4;line-height:1.1;text-decoration:none">${l==='pt'?'Equipe':'Team'}</a>
-        <a href="publications.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:#141310;padding:12px 0;border-bottom:1px solid #E5DFD4;line-height:1.1;text-decoration:none">${l==='pt'?'Publicações':'Publications'}</a>
-        <a href="news.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:#141310;padding:12px 0;border-bottom:1px solid #E5DFD4;line-height:1.1;text-decoration:none">${l==='pt'?'Notícias':'News'}</a>
+        <a href="index.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Início':'Home'}</a>
+        <a href="research.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Pesquisa':'Research'}</a>
+        <a href="team.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Equipe':'Team'}</a>
+        <a href="publications.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Publicações':'Publications'}</a>
+        <a href="news.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Notícias':'News'}</a>
       </div>
-      <div style="display:flex;gap:0;margin-top:auto;border:1px solid #E5DFD4;border-radius:100px;padding:4px;align-self:flex-start;font-family:'JetBrains Mono',monospace">
-        <button data-lang="en" onclick="setLang('en')" style="background:none;border:0;padding:8px 16px;font:inherit;font-size:11px;letter-spacing:.14em;color:#6E6960;cursor:pointer;border-radius:100px">EN</button>
-        <button data-lang="pt" onclick="setLang('pt')" style="background:none;border:0;padding:8px 16px;font:inherit;font-size:11px;letter-spacing:.14em;color:#6E6960;cursor:pointer;border-radius:100px">PT</button>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:auto;flex-wrap:wrap">
+        <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:100px;padding:4px;font-family:'JetBrains Mono',monospace">
+          <button data-lang="en" onclick="setLang('en')" style="background:none;border:0;padding:8px 16px;font:inherit;font-size:11px;letter-spacing:.14em;color:var(--muted);cursor:pointer;border-radius:100px">EN</button>
+          <button data-lang="pt" onclick="setLang('pt')" style="background:none;border:0;padding:8px 16px;font:inherit;font-size:11px;letter-spacing:.14em;color:var(--muted);cursor:pointer;border-radius:100px">PT</button>
+        </div>
+        <button class="mobile-theme" aria-label="Toggle dark mode" onclick="toggleTheme()">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.2 17.2l1.4 1.4M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+          <span>${l==='pt'?'Tema':'Theme'}</span>
+        </button>
       </div>
     </div>
   `;
@@ -157,10 +197,86 @@ function toggleMobileMenu() {
   }
 }
 
+/* ===== ENHANCEMENTS: scroll reveal + count-up ===== */
+// Keep this list in sync with the reveal selectors in style.css
+const REVEAL_SEL = '.hero-grid > div, .section-head, .highlight-grid > *, .research-strip, .news-card, .media-item, .feat-news, .card-plain, .pi-grid, .stat, .member, .alum, .pub, .research-detail';
+
+function initReveal() {
+  const els = Array.from(document.querySelectorAll(REVEAL_SEL));
+  if (!els.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+  // Subtle cascade for siblings that enter together
+  els.forEach(el => {
+    const sibs = el.parentElement
+      ? Array.from(el.parentElement.children).filter(c => c.matches && c.matches(REVEAL_SEL))
+      : [el];
+    const idx = Math.max(0, sibs.indexOf(el));
+    el.style.transitionDelay = Math.min(idx, 6) * 70 + 'ms';
+  });
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  els.forEach(el => {
+    // Above the fold: reveal on load (still staggered); below: reveal on scroll
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('is-revealed');
+    else io.observe(el);
+  });
+}
+
+function initCountUp() {
+  const nums = Array.from(document.querySelectorAll('.hero-stat .num, .pi-meta .num, .stat .num'));
+  if (!nums.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = [];
+  nums.forEach(el => {
+    const m = String(el.textContent).trim().match(/^(\d+)(.*)$/);
+    if (!m) return;
+    const target = parseInt(m[1], 10), suffix = m[2];
+    if (reduce || !('IntersectionObserver' in window)) { el.textContent = target + suffix; return; }
+    el.textContent = '0' + suffix;
+    targets.push({ el, target, suffix });
+  });
+  if (!targets.length) return;
+  const animate = ({ el, target, suffix }) => {
+    const dur = 1100; let start = null;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const step = ts => {
+      if (start === null) start = ts;
+      const p = Math.min(1, (ts - start) / dur);
+      el.textContent = Math.round(ease(p) * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const t = targets.find(x => x.el === e.target);
+        if (t) animate(t);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  targets.forEach(t => io.observe(t.el));
+}
+
+function initEnhancements() {
+  initReveal();
+  initCountUp();
+}
+
 function renderChrome(active) {
   const navSlot = document.getElementById('nav-slot');
   const footSlot = document.getElementById('footer-slot');
   if (navSlot) navSlot.innerHTML = renderNav(active);
   if (footSlot) footSlot.innerHTML = renderFooter();
   applyLang();
+  applyTheme();
+  initEnhancements();
 }
