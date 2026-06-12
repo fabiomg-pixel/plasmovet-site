@@ -21,6 +21,13 @@
 .research-detail h2 { font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
 .research-detail p { font-size: 15px; line-height: 1.7; color: var(--ink-2); max-width: 56ch; }
 .research-detail .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.research-detail .refs { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; max-width: 60ch; }
+.research-detail .refs-group { display: flex; flex-direction: column; gap: 7px; }
+.research-detail .refs-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral-deep); }
+.research-detail .refs ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; }
+.research-detail .refs li { font-size: 12.5px; line-height: 1.5; color: var(--muted); padding-left: 15px; position: relative; }
+.research-detail .refs li::before { content: '·'; position: absolute; left: 3px; color: var(--coral); font-weight: 700; }
+.research-detail .refs li em { font-style: italic; color: var(--ink-2); }
 
 .diagram-box { aspect-ratio: 5/4; background: var(--paper-2); border: 1px solid var(--line); border-radius: 4px; position: relative; overflow: hidden; }
 .diagram-box svg { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -57,13 +64,28 @@
       <div>
         <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Trained immunity · epigenetics" data-i18n-pt="Imunidade treinada · epigenética">Trained immunity · epigenetics</div>
         <h2 data-i18n-en="Mosquito innate immune memory." data-i18n-pt="Memória imune inata em mosquitos.">Mosquito innate immune memory.</h2>
-        <p data-i18n-en="Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how Anopheles mosquitoes encode a prior Plasmodium encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant to the malaria parasite, interrupting transmission at its source."
-           data-i18n-pt="Por muito tempo presumiu-se que insetos não tivessem memória imunológica — sem anticorpos, sem sistema imune adaptativo. Ainda assim, um mosquito que sobrevive a uma infecção encara a próxima de forma diferente. Esta linha investiga como mosquitos Anopheles registram um encontro anterior com Plasmodium por meio da reprogramação epigenética de suas células imunes — e se essa memória poderia ser direcionada para tornar o próprio vetor resistente ao parasita da malária, interrompendo a transmissão na origem.">Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how Anopheles mosquitoes encode a prior Plasmodium encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant to the malaria parasite, interrupting transmission at its source.</p>
+        <p data-i18n-en="Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how mosquitoes encode a prior pathogen encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant, interrupting transmission at its source."
+           data-i18n-pt="Por muito tempo presumiu-se que insetos não tivessem memória imunológica — sem anticorpos, sem sistema imune adaptativo. Ainda assim, um mosquito que sobrevive a uma infecção encara a próxima de forma diferente. Esta linha investiga como mosquitos registram um encontro anterior com um patógeno por meio da reprogramação epigenética de suas células imunes — e se essa memória poderia ser direcionada para tornar o próprio vetor resistente, interrompendo a transmissão na origem.">Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how mosquitoes encode a prior pathogen encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant, interrupting transmission at its source.</p>
         <div class="tags">
           <span class="chip">Trained immunity</span>
           <span class="chip">Epigenetics</span>
-          <span class="chip"><em>Plasmodium</em></span>
-          <span class="chip"><em>Anopheles</em></span>
+          <span class="chip">Immune priming</span>
+          <span class="chip">Mosquitoes</span>
+        </div>
+        <div class="refs">
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
+            <ul>
+              <li>Netea MG, Joosten LAB, Latz E, et al. <em>Trained immunity: a program of innate immune memory in health and disease.</em> Science, 2016.</li>
+            </ul>
+          </div>
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="From the lab" data-i18n-pt="Do grupo">From the lab</span>
+            <ul>
+              <li>Gomes FM, Tyner MDW, Barletta ABF, et al. <em>Double peroxidase and histone acetyltransferase AgTip60 maintain innate immune memory in primed mosquitoes.</em> PNAS, 2021.</li>
+              <li>Gomes FM, Silva M, Molina-Cruz A, Barillas-Mury C. <em>Molecular mechanisms of insect immune memory and pathogen transmission.</em> PLoS Pathogens, 2022.</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="diagram-box">
@@ -117,6 +139,21 @@
           <span class="chip">Obesity</span>
           <span class="chip">Diabetes</span>
         </div>
+        <div class="refs">
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
+            <ul>
+              <li>Sim S, Jupatanakul N, Dimopoulos G. <em>Mosquito immunity against arboviruses.</em> Viruses, 2014.</li>
+            </ul>
+          </div>
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="From the lab" data-i18n-pt="Do grupo">From the lab</span>
+            <ul>
+              <li>Menezes A, Walter-Nuno AB, Costa-Bartuli E, et al. <em>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</em> Frontiers in Immunology, 2025.</li>
+              <li>Menezes A, Peixoto M, Silva M, et al. <em>Western diet consumption by host vertebrate promotes altered gene expression on Aedes aegypti, reducing its lifespan and increasing fertility following blood feeding.</em> Parasites &amp; Vectors, 2024.</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="diagram-box">
         <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
@@ -156,6 +193,21 @@
           <span class="chip">Comparative</span>
           <span class="chip">Invertebrates</span>
           <span class="chip">TLR / NF-κB</span>
+        </div>
+        <div class="refs">
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
+            <ul>
+              <li>Flajnik MF, Du Pasquier L. <em>Evolution of innate and adaptive immunity: can we draw a line?</em> Trends in Immunology, 2004.</li>
+            </ul>
+          </div>
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="From the lab" data-i18n-pt="Do grupo">From the lab</span>
+            <ul>
+              <li>Silva RCMC, Gomes FM. <em>Evolution of the major components of innate immunity in animals.</em> Journal of Molecular Evolution, 2024.</li>
+              <li>Silva RCMC, Ramos IB, Travassos LH, Mendez APG, Gomes FM. <em>Evolution of innate immunity: lessons from mammalian models shaping our current view of insect immunity.</em> Journal of Comparative Physiology B, 2024.</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="diagram-box">
@@ -204,6 +256,22 @@
           <span class="chip">DAPI</span>
           <span class="chip">Phosphate sensing</span>
         </div>
+        <div class="refs">
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
+            <ul>
+              <li>Kornberg A, Rao NN, Ault-Riché D. <em>Inorganic polyphosphate: a molecule of many functions.</em> Annual Review of Biochemistry, 1999.</li>
+              <li>Xie L, Jakob U. <em>Inorganic polyphosphate, a multifunctional polyanionic protein scaffold.</em> Journal of Biological Chemistry, 2019.</li>
+            </ul>
+          </div>
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="From the lab" data-i18n-pt="Do grupo">From the lab</span>
+            <ul>
+              <li>Gomes FM, Ramos IB, Wendt C, et al. <em>New insights into in situ microscopic visualization and quantification of inorganic polyphosphate stores by DAPI-staining.</em> European Journal of Histochemistry, 2013.</li>
+              <li>Vila T, Frases S, Gomes FM. <em>Lessons from protozoans: phosphate sensing and polyphosphate storage in fungi.</em> PLoS Pathogens, 2022.</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="diagram-box">
         <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
@@ -245,6 +313,20 @@
           <span class="chip">Midgut</span>
           <span class="chip">Ultrastructure</span>
           <span class="chip">LUCHM</span>
+        </div>
+        <div class="refs">
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
+            <ul>
+              <li>Terra WR, Ferreira C. <em>Evolutionary trends of digestion and absorption in the major insect orders.</em> Arthropod Structure &amp; Development, 2020.</li>
+            </ul>
+          </div>
+          <div class="refs-group">
+            <span class="refs-label" data-i18n-en="From the lab" data-i18n-pt="Do grupo">From the lab</span>
+            <ul>
+              <li>Gomes FM, Carvalho DB, Machado EA, Miranda K. <em>Ultrastructural and functional analysis of secretory goblet cells in the midgut of the lepidopteran Anticarsia gemmatalis.</em> Cell &amp; Tissue Research, 2013.</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="diagram-box">
