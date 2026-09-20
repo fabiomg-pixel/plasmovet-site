@@ -48,6 +48,19 @@
 .media-item h5 { font-family:'Inter',sans-serif; font-size: 14px; line-height: 1.5; font-weight: 400; opacity: .85; }
 .media-item .arrow { text-align: right; font-family:'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: .6; }
 @media (max-width: 720px) { .media-item { grid-template-columns: 1fr; gap: 8px; } }
+
+.updates { display:flex; flex-direction:column; margin-top:8px; }
+.update { display:grid; grid-template-columns:110px 150px 1fr; gap:32px; padding:26px 0; border-top:1px solid var(--line); align-items:start; transition:padding .3s ease; }
+.update:last-child { border-bottom:1px solid var(--line); }
+.update:hover { padding-left:10px; }
+.update .when { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral-deep); padding-top:4px; }
+.update .kind { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); padding-top:4px; }
+.update h4 { font-family:'Instrument Serif',serif; font-size:24px; line-height:1.15; letter-spacing:-0.015em; margin-bottom:8px; }
+.update h4 em { color:var(--coral); font-style:italic; }
+.update p { font-size:13.5px; color:var(--ink-2); line-height:1.6; max-width:62ch; }
+.update a.more { font-size:13px; color:var(--coral-deep); text-decoration:none; display:inline-block; margin-top:10px; }
+.update a.more:hover { text-decoration:underline; }
+@media (max-width:820px){ .update { grid-template-columns:1fr; gap:8px; } .update .kind { padding-top:0; } }
 </style>
 </head>
 <body>
@@ -89,6 +102,77 @@
       </div>
     </article>
   </div>
+
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="Updates" data-i18n-pt="Atualizações">Updates</span></div>
+          <h2 data-i18n-html data-i18n-en="What's been <em>happening</em>." data-i18n-pt="O que vem <em>acontecendo</em>.">What's been <em>happening</em>.</h2>
+        </div>
+      </div>
+      <div class="updates">
+        <article class="update">
+          <div class="when" data-i18n-en="Sep · 2026" data-i18n-pt="Set · 2026">Sep · 2026</div>
+          <div class="kind" data-i18n-en="Funding" data-i18n-pt="Financiamento">Funding</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="CNPq <em>Research Productivity</em> Fellowship." data-i18n-pt="Bolsa de <em>Produtividade em Pesquisa</em> do CNPq.">CNPq <em>Research Productivity</em> Fellowship.</h4>
+            <p data-i18n-en="Fabio M. Gomes has been awarded a CNPq Research Productivity Fellowship, alongside the ongoing JCNE grant from FAPERJ (Young Scientist of Our State), which supports the insulin signalling work." data-i18n-pt="Fabio M. Gomes foi contemplado com a Bolsa de Produtividade em Pesquisa do CNPq, somada ao JCNE da FAPERJ (Jovem Cientista do Nosso Estado), que sustenta a frente de sinalização por insulina.">Fabio M. Gomes has been awarded a CNPq Research Productivity Fellowship, alongside the ongoing JCNE grant from FAPERJ (Young Scientist of Our State), which supports the insulin signalling work.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="Sep · 2026" data-i18n-pt="Set · 2026">Sep · 2026</div>
+          <div class="kind" data-i18n-en="Thesis defence" data-i18n-pt="Defesa de tese">Thesis defence</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="Alexandre de Souza Menezes defends his <em>doctoral thesis</em>." data-i18n-pt="Alexandre de Souza Menezes defende sua <em>tese de doutorado</em>.">Alexandre de Souza Menezes defends his <em>doctoral thesis</em>.</h4>
+            <p data-i18n-en="The thesis asks how the vector capacity of Aedes aegypti is modulated by changes in the blood of overweight, insulin-resistant mice — the experimental core of our host-metabolism line. Co-supervised with Kildare Rocha de Miranda." data-i18n-pt="A tese investiga como a capacidade vetorial de Aedes aegypti é modulada pela alteração dos componentes do sangue de camundongos com sobrepeso e resistência à insulina — o núcleo experimental da nossa linha de metabolismo do hospedeiro. Coorientação de Kildare Rocha de Miranda.">The thesis asks how the vector capacity of Aedes aegypti is modulated by changes in the blood of overweight, insulin-resistant mice — the experimental core of our host-metabolism line. Co-supervised with Kildare Rocha de Miranda.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="Aug · 2026" data-i18n-pt="Ago · 2026">Aug · 2026</div>
+          <div class="kind" data-i18n-en="Partnership" data-i18n-pt="Cooperação">Partnership</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="Cooperation agreement with <em>Fiocruz</em> for Anopheles work." data-i18n-pt="Acordo de cooperação com a <em>Fiocruz</em> para trabalho com Anopheles.">Cooperation agreement with <em>Fiocruz</em> for Anopheles work.</h4>
+            <p data-i18n-en="A material transfer and cooperation agreement with Fiocruz opens the way for joint work on Anopheles, strengthening the malaria side of the group's research." data-i18n-pt="Um acordo de cooperação e transferência de material com a Fiocruz abre caminho para o trabalho conjunto com Anopheles, reforçando a frente de malária do grupo.">A material transfer and cooperation agreement with Fiocruz opens the way for joint work on Anopheles, strengthening the malaria side of the group's research.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="Aug · 2026" data-i18n-pt="Ago · 2026">Aug · 2026</div>
+          <div class="kind" data-i18n-en="Invited talk" data-i18n-pt="Palestra">Invited talk</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="Polyphosphate at the <em>FAMF 2026</em> fluorescence microscopy workshop." data-i18n-pt="Polifosfato no workshop de microscopia de fluorescência <em>FAMF 2026</em>.">Polyphosphate at the <em>FAMF 2026</em> fluorescence microscopy workshop.</h4>
+            <p data-i18n-en="Invited lecture 'Conserved inorganic polyphosphate accumulations in biological systems' at the 1st Workshop on Fundamentals and Applications of Fluorescence Microscopy, Campinas, SP." data-i18n-pt="Palestra convidada “Acúmulos conservados de polifosfato inorgânico em sistemas biológicos” no I Workshop de Fundamentos e Aplicações da Microscopia de Fluorescência, Campinas, SP.">Invited lecture 'Conserved inorganic polyphosphate accumulations in biological systems' at the 1st Workshop on Fundamentals and Applications of Fluorescence Microscopy, Campinas, SP.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="Aug · 2026" data-i18n-pt="Ago · 2026">Aug · 2026</div>
+          <div class="kind" data-i18n-en="Institutional" data-i18n-pt="Institucional">Institutional</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="UFRJ and <em>CNPEM</em> map common ground." data-i18n-pt="UFRJ e <em>CNPEM</em> mapeiam interesses comuns.">UFRJ and <em>CNPEM</em> map common ground.</h4>
+            <p data-i18n-en="A working meeting between UFRJ and CNPEM explored shared ground in imaging and structural biology, and where the two institutions' platforms can support each other." data-i18n-pt="Um encontro de trabalho entre UFRJ e CNPEM explorou interesses comuns em imagem e biologia estrutural, e onde as plataformas das duas instituições podem se apoiar.">A working meeting between UFRJ and CNPEM explored shared ground in imaging and structural biology, and where the two institutions' platforms can support each other.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="Aug · 2026" data-i18n-pt="Ago · 2026">Aug · 2026</div>
+          <div class="kind" data-i18n-en="Conference" data-i18n-pt="Congresso">Conference</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="The group at <em>SBBC 2026</em>." data-i18n-pt="O grupo no <em>SBBC 2026</em>.">The group at <em>SBBC 2026</em>.</h4>
+            <p data-i18n-en="Members of the group presented current work at the Brazilian Congress of Cell Biology." data-i18n-pt="Integrantes do grupo apresentaram trabalhos em andamento no Congresso Brasileiro de Biologia Celular.">Members of the group presented current work at the Brazilian Congress of Cell Biology.</p>
+          </div>
+        </article>
+        <article class="update">
+          <div class="when" data-i18n-en="2026" data-i18n-pt="2026">2026</div>
+          <div class="kind" data-i18n-en="Opportunities" data-i18n-pt="Oportunidades">Opportunities</div>
+          <div>
+            <h4 data-i18n-html data-i18n-en="Three <em>openings</em> for new students." data-i18n-pt="Três <em>vagas</em> abertas para novos estudantes.">Three <em>openings</em> for new students.</h4>
+            <p data-i18n-en="We are recruiting undergraduate, master's and doctoral students across three fronts: microscopy and image processing, biochemistry and molecular biology, and omics and integrative analysis." data-i18n-pt="Estamos recrutando estudantes de iniciação científica, mestrado e doutorado em três frentes: microscopia e processamento de imagens, bioquímica e biologia molecular, e ômicas e análises integrativas.">We are recruiting undergraduate, master's and doctoral students across three fronts: microscopy and image processing, biochemistry and molecular biology, and omics and integrative analysis.</p>
+            <a class="more" href="opportunities.html" data-i18n-en="See the openings →" data-i18n-pt="Ver as vagas →">See the openings →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <section class="media-section">
     <div class="container">

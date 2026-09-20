@@ -201,7 +201,7 @@ function toggleMobileMenu() {
 
 /* ===== ENHANCEMENTS: scroll reveal + count-up ===== */
 // Keep this list in sync with the reveal selectors in style.css
-const REVEAL_SEL = '.hero-grid > div, .section-head, .highlight-grid > *, .research-strip, .news-card, .media-item, .feat-news, .card-plain, .pi-grid, .stat, .member, .alum, .pub, .research-detail, .vaga, .prog';
+const REVEAL_SEL = '.hero-grid > div, .section-head, .highlight-grid > *, .research-strip, .news-card, .media-item, .feat-news, .card-plain, .pi-grid, .stat, .member, .alum, .pub, .research-detail, .vaga, .prog, .update';
 
 function initReveal() {
   const els = Array.from(document.querySelectorAll(REVEAL_SEL));
