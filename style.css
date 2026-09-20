@@ -33,6 +33,13 @@ body {
 }
 
 img { max-width: 100%; display: block; }
+
+/* Instrument Serif is loaded at weight 400 only. Browsers default h1-h6 to
+   bold (700); with no 700 face available they fake it by drawing every glyph
+   twice, slightly offset, which reads as text sitting on a copy of itself.
+   Every serif heading on the site is meant to be 400. */
+h1, h2, h3, h4, h5, h6 { font-weight: 400; }
+html { font-synthesis-weight: none; }
 a { color: inherit; text-decoration: none; }
 
 .serif { font-family: 'Instrument Serif', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.015em; }
