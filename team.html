@@ -22,6 +22,7 @@
 .pi-feature .photo .label { position: absolute; bottom: 14px; left: 14px; right: 14px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
 .pi-feature h2 { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.02em; margin-bottom: 8px; }
 .pi-feature .title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral-deep); margin-bottom: 28px; }
+.pi-creds { display:flex; flex-wrap:wrap; gap:8px; margin:-18px 0 26px; }
 .pi-feature .bio-cols { columns: 2; column-gap: 40px; font-size: 15px; line-height: 1.7; color: var(--ink-2); }
 @media (max-width: 720px) { .pi-feature .bio-cols { columns: 1; } }
 .pi-feature .bio-cols p { margin-bottom: 14px; break-inside: avoid; }
@@ -68,8 +69,8 @@
     <div class="container">
       <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="The people behind the science" data-i18n-pt="As pessoas por trás da ciência">The people behind the science</span></div>
       <h1 data-i18n-html data-i18n-en="<em>Team</em> &amp; collaborators" data-i18n-pt="<em>Equipe</em> e colaboradores">Team &amp; collaborators</h1>
-      <p data-i18n-en="A multidisciplinary lab of biologists, biochemists, and biomedical scientists investigating vector-pathogen-host interactions."
-         data-i18n-pt="Um laboratório multidisciplinar de biólogos, bioquímicos e cientistas biomédicos investigando interações vetor-patógeno-hospedeiro.">A multidisciplinary lab of biologists, biochemists, and biomedical scientists investigating vector-pathogen-host interactions.</p>
+      <p data-i18n-en="A multidisciplinary research group of biologists, biochemists and biomedical scientists investigating vector-pathogen-host interactions at IBCCF/UFRJ."
+         data-i18n-pt="Um grupo de pesquisa multidisciplinar de biólogos, bioquímicos e cientistas biomédicos investigando interações vetor-patógeno-hospedeiro no IBCCF/UFRJ.">A multidisciplinary research group of biologists, biochemists and biomedical scientists investigating vector-pathogen-host interactions at IBCCF/UFRJ.</p>
     </div>
   </section>
 
@@ -93,6 +94,7 @@
         <div class="eyebrow coral" style="margin-bottom:14px" data-i18n-en="Principal investigator" data-i18n-pt="Pesquisador principal">Principal investigator</div>
         <h2>Dr. Fabio M. Gomes</h2>
         <div class="title" data-i18n-en="Associate Professor · Vector Biology &amp; Immunometabolism" data-i18n-pt="Professor Associado · Biologia de Vetores e Imunometabolismo">Associate Professor · Vector Biology &amp; Immunometabolism</div>
+        <div class="pi-creds"><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="CNPq Research Productivity Fellow" data-i18n-pt="Bolsista de Produtividade em Pesquisa · CNPq">CNPq Research Productivity Fellow</span></span><span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="JCNE · FAPERJ" data-i18n-pt="JCNE · FAPERJ">JCNE · FAPERJ</span></span></div>
         <div class="bio-cols">
           <p data-i18n-en="Fabio M. Gomes completed his undergraduate studies in Biology (2006), MSc (2008), and Ph.D. in Biological Sciences — Biophysics (2012) at UFRJ, supervised by Ednildo de Alcantara Machado and Kildare Rocha de Miranda. His doctoral and early postdoctoral work established foundational research on inorganic polyphosphate biology in insects — including the widely-adopted DAPI-based technique for in situ visualization and quantification of polyP stores."
              data-i18n-pt="Fabio M. Gomes concluiu a graduação em Biologia (2006), mestrado (2008) e doutorado em Ciências Biológicas — Biofísica (2012) na UFRJ, sob orientação de Ednildo de Alcantara Machado e Kildare Rocha de Miranda. Sua formação doutoral e pós-doutoral estabeleceu trabalhos fundamentais sobre biologia do polifosfato inorgânico em insetos — incluindo a técnica baseada em DAPI para visualização e quantificação in situ de estoques de polyP, amplamente adotada.">UG in Biology (2006), MSc (2008) and Ph.D. in Biophysics (2012) at UFRJ, under Ednildo de Alcantara Machado and Kildare Rocha de Miranda. Foundational work on polyphosphate biology in insects, including the widely-adopted DAPI-based polyP visualization technique.</p>
@@ -101,8 +103,8 @@
         </div>
         <div class="bio-meta">
           <div><div class="label">Email</div><div class="val">fabiomg@biof.ufrj.br</div></div>
-          <div><div class="label">Lattes</div><div class="val">lattes.cnpq.br</div></div>
-          <div><div class="label">ORCID</div><div class="val">0000-0002-4810-5745</div></div>
+          <div><div class="label">Lattes</div><div class="val"><a href="https://lattes.cnpq.br/8594781726473810" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">lattes.cnpq.br</a></div></div>
+          <div><div class="label">ORCID</div><div class="val"><a href="https://orcid.org/0000-0001-8439-8762" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">0000-0001-8439-8762</a></div></div>
         </div>
       </div>
     </div>
@@ -165,7 +167,7 @@
         </div>
         <div class="right">
           <p data-i18n-en="Members who trained with us and continued their careers in research, industry, and teaching across Brazil and abroad."
-             data-i18n-pt="Membros formados no laboratório que seguiram carreiras em pesquisa, indústria e ensino no Brasil e no exterior.">Members who trained with us and continued their careers in research, industry, and teaching across Brazil and abroad.</p>
+             data-i18n-pt="Pessoas formadas no grupo que seguiram carreiras em pesquisa, indústria e ensino no Brasil e no exterior.">Members who trained with us and continued their careers in research, industry, and teaching across Brazil and abroad.</p>
         </div>
       </div>
 
