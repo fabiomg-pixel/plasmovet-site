@@ -47,7 +47,13 @@
 .alumni-section { background: var(--paper-2); padding: 80px 0; }
 .alumni-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; margin-top: 40px; overflow: hidden; }
 @media (max-width: 720px) { .alumni-grid { grid-template-columns: 1fr; } }
-.alum { background: var(--paper); padding: 22px 28px; display: grid; grid-template-columns: 40px 1fr 1fr; gap: 24px; align-items: center; }
+.alum { background: var(--paper); padding: 22px 28px; display: grid; grid-template-columns: 34px 1fr; gap: 20px; align-items: start; }
+.alum .contrib { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+.alum .contrib a { font-size: 12px; line-height: 1.45; color: var(--muted); text-decoration: none; padding-left: 13px; position: relative; display: block; transition: color .2s ease; }
+.alum .contrib a::before { content: ''; position: absolute; left: 2px; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--coral); }
+.alum .contrib a:hover { color: var(--coral-deep); }
+.alum .contrib a em { font-style: italic; color: var(--ink-2); }
+.alum .lvl { font-size:10px; font-family:'JetBrains Mono',monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 .alum .idx { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-2); }
 .alum .name { font-family: 'Instrument Serif', serif; font-size: 20px; line-height: 1.15; letter-spacing: -0.01em; }
 .alum .destination { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
@@ -129,16 +135,22 @@
           <div class="project" data-i18n-en="Immunometabolism of vector insects." data-i18n-pt="Imunometabolismo de insetos vetores.">Immunometabolism of vector insects.</div>
         </div>
         <div class="member">
-          <div class="photo"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#F2EDE6"/><circle cx="100" cy="95" r="30" fill="#9A9488" opacity="0.6"/><path d="M40 250 Q40 160 100 155 Q160 160 160 250 Z" fill="#9A9488" opacity="0.6"/></svg><div class="idx">03</div><div class="flag">IC</div></div>
-          <div class="name">Leon Elias Grecca dos Santos</div>
-          <div class="role" data-i18n-en="Undergrad researcher" data-i18n-pt="Iniciação científica">Undergrad researcher</div>
-          <div class="project" data-i18n-en="Immunometabolic markers of Aedes aegypti infection." data-i18n-pt="Marcadores imunometabólicos da infecção de Aedes aegypti.">Immunometabolic markers of Aedes aegypti infection.</div>
-        </div>
-        <div class="member">
-          <div class="photo"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#EFEAE1"/><circle cx="100" cy="95" r="30" fill="#6E6960" opacity="0.55"/><path d="M40 250 Q40 160 100 155 Q160 160 160 250 Z" fill="#6E6960" opacity="0.55"/></svg><div class="idx">04</div><div class="flag">IC</div></div>
+          <div class="photo"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#EFEAE1"/><circle cx="100" cy="95" r="30" fill="#6E6960" opacity="0.55"/><path d="M40 250 Q40 160 100 155 Q160 160 160 250 Z" fill="#6E6960" opacity="0.55"/></svg><div class="idx">03</div><div class="flag">IC</div></div>
           <div class="name">Ana Beatriz de Oliveira Barbosa</div>
           <div class="role" data-i18n-en="Undergrad researcher" data-i18n-pt="Iniciação científica">Undergrad researcher</div>
           <div class="project" data-i18n-en="Homeostasis and vector competence of Aedes aegypti." data-i18n-pt="Homeostasia e competência vetorial de Aedes aegypti.">Homeostasis and vector competence of Aedes aegypti.</div>
+        </div>
+        <div class="member">
+          <div class="photo"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#F2EDE6"/><circle cx="100" cy="95" r="30" fill="#9A9488"/><path d="M40 250 Q40 160 100 155 Q160 160 160 250 Z" fill="#9A9488"/></svg><div class="idx">04</div><div class="flag">IC</div></div>
+          <div class="name">Gabriel Mendes</div>
+          <div class="role" data-i18n-en="Undergrad researcher" data-i18n-pt="Iniciação científica">Undergrad researcher</div>
+          <div class="project" data-i18n-en="Host metabolic signalling and its effect on Aedes aegypti physiology." data-i18n-pt="Sinalização metabólica do hospedeiro e seu efeito sobre a fisiologia de Aedes aegypti.">Host metabolic signalling and its effect on Aedes aegypti physiology.</div>
+        </div>
+        <div class="member">
+          <div class="photo"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#F2EDE6"/><circle cx="100" cy="95" r="30" fill="#9A9488"/><path d="M40 250 Q40 160 100 155 Q160 160 160 250 Z" fill="#9A9488"/></svg><div class="idx">05</div><div class="flag">MSc</div></div>
+          <div class="name">João Pedro Vieira</div>
+          <div class="role" data-i18n-en="MSc student" data-i18n-pt="Mestrando">MSc student</div>
+          <div class="project" data-i18n-en="Immune and barrier responses of the velvetbean caterpillar Anticarsia gemmatalis under biological control." data-i18n-pt="Respostas imunes e de barreira da lagarta-da-soja Anticarsia gemmatalis sob controle biológico.">Immune and barrier responses of the velvetbean caterpillar Anticarsia gemmatalis under biological control.</div>
         </div>
       </div>
     </div>
@@ -158,9 +170,29 @@
       </div>
 
       <div class="alumni-grid">
-        <div class="alum"><div class="idx">01</div><div><div class="name">Pamela Liane Condori Huaman</div><div style="font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">MSc · 2025</div></div><div class="destination" data-i18n-html data-i18n-en="MSc in Cellular &amp; Molecular Biology, <em>Fundação Oswaldo Cruz (Fiocruz)</em>" data-i18n-pt="Mestrado em Biologia Celular e Molecular, <em>Fundação Oswaldo Cruz (Fiocruz)</em>">MSc in Cellular &amp; Molecular Biology, <em>Fundação Oswaldo Cruz (Fiocruz)</em></div></div>
-        <div class="alum"><div class="idx">02</div><div><div class="name">Melissa Ingrid dos Santos da Silva</div><div style="font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">TCC · 2023</div></div><div class="destination" data-i18n-html data-i18n-en="B.Pharm. in Pharmacy, <em>UFRJ</em>" data-i18n-pt="Graduação em Farmácia, <em>UFRJ</em>">B.Pharm., <em>UFRJ</em></div></div>
-        <div class="alum"><div class="idx">03</div><div><div class="name">Ana Paula Guzmán Méndez</div><div style="font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">IC</div></div><div class="destination" data-i18n-html data-i18n-en="Effect of host malnutrition on <em>Aedes aegypti</em> vector competence" data-i18n-pt="Efeito da desnutrição do hospedeiro na competência vetorial de <em>Aedes aegypti</em>">Effect of host malnutrition on <em>Aedes aegypti</em> vector competence</div></div>
+        <div class="alum"><div class="idx">01</div><div>
+          <div class="name">Ana Paula Guzmán Méndez</div>
+          <div class="lvl">IC</div>
+          <div class="contrib">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41472722/" target="_blank" rel="noopener">Menezes A, et al. <em>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</em> Front. Immunol., 2025.</a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38573502/" target="_blank" rel="noopener">Silva RCMC, et al. <em>Evolution of innate immunity: lessons from mammalian models shaping our current view of insect immunity.</em> J. Comp. Physiol. B, 2024.</a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/39534858/" target="_blank" rel="noopener">Lanzaro MD, et al. <em>Cry1Ac toxin binding in the velvetbean caterpillar Anticarsia gemmatalis.</em> Front. Physiol., 2024.</a>
+          </div>
+        </div></div>
+        <div class="alum"><div class="idx">02</div><div>
+          <div class="name">Pamela Liane Condori Huaman</div>
+          <div class="lvl">MSc · 2025</div>
+          <div class="contrib">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41472722/" target="_blank" rel="noopener">Menezes A, et al. <em>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</em> Front. Immunol., 2025.</a>
+          </div>
+        </div></div>
+        <div class="alum"><div class="idx">03</div><div>
+          <div class="name">Melissa Ingrid dos Santos da Silva</div>
+          <div class="lvl">TCC · 2023</div>
+          <div class="contrib">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38184590/" target="_blank" rel="noopener">Menezes A, et al. <em>Western diet consumption by host vertebrate promotes altered gene expression on Aedes aegypti.</em> Parasites &amp; Vectors, 2024.</a>
+          </div>
+        </div></div>
       </div>
     </div>
   </section>
