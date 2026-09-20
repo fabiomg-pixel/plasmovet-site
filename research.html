@@ -46,6 +46,17 @@
 .infra-stats .stat { border: 1px solid rgba(255,255,255,.15); padding: 24px; border-radius: 4px; }
 .infra-stats .stat .num { font-family: 'Instrument Serif', serif; font-size: 56px; line-height: 1; color: var(--coral); letter-spacing: -0.02em; }
 .infra-stats .stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: .7; margin-top: 8px; }
+
+.group-head { padding: 64px 0 8px; }
+.group-head .kicker { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; display:flex; align-items:center; gap:12px; }
+.group-head .kicker::after { content:''; flex:1; height:1px; background:var(--line); }
+.group-head h2 { font-family:'Instrument Serif',serif; font-size:clamp(34px,4.6vw,52px); line-height:1.03; letter-spacing:-0.02em; max-width:20ch; }
+.group-head h2 em { color:var(--coral); font-style:italic; }
+.group-head p { font-size:16px; color:var(--ink-2); line-height:1.65; max-width:62ch; margin-top:18px; }
+.group-core { background:var(--coral-wash); border-radius:8px; padding:44px 40px 8px; margin-top:8px; }
+@media (max-width:720px){ .group-core { padding:28px 22px 4px; } }
+.diagram-box img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+html[data-theme="dark"] .diagram-box img { filter:brightness(.93) saturate(.95); }
 </style>
 </head>
 <body>
@@ -62,483 +73,129 @@
   </section>
 
   <div class="container">
+    <div class="group-head">
+      <div class="kicker" data-i18n-en="Core line" data-i18n-pt="Linha central">Core line</div>
+      <h2 data-i18n-html data-i18n-en="Insect <em>immunity</em>." data-i18n-pt="Imunidade de <em>insetos</em>.">Insect <em>immunity</em>.</h2>
+      <p data-i18n-en="Everything the group does starts here: how an insect recognises an infection, what it does about it, and what that response costs. Three questions organise the work — whether the response carries memory, how metabolism constrains it, and how far back in animal evolution its parts go."
+         data-i18n-pt="Tudo o que o grupo faz parte daqui: como um inseto reconhece uma infecção, o que faz a respeito e quanto essa resposta custa. Três perguntas organizam o trabalho — se a resposta guarda memória, como o metabolismo a limita, e até onde na evolução animal suas peças recuam.">Everything the group does starts here: how an insect recognises an infection, what it does about it, and what that response costs. Three questions organise the work — whether the response carries memory, how metabolism constrains it, and how far back in animal evolution its parts go.</p>
+    </div>
+    <div class="group-core">
     <article class="research-detail">
       <div class="num">01</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Trained immunity · epigenetics" data-i18n-pt="Imunidade treinada · epigenética">Trained immunity · epigenetics</div>
-        <h2 data-i18n-en="Mosquito innate immune memory." data-i18n-pt="Memória imune inata em mosquitos.">Mosquito innate immune memory.</h2>
-        <p data-i18n-en="Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how mosquitoes encode a prior pathogen encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant, interrupting transmission at its source."
-           data-i18n-pt="Por muito tempo presumiu-se que insetos não tivessem memória imunológica — sem anticorpos, sem sistema imune adaptativo. Ainda assim, um mosquito que sobrevive a uma infecção encara a próxima de forma diferente. Esta linha investiga como mosquitos registram um encontro anterior com um patógeno por meio da reprogramação epigenética de suas células imunes — e se essa memória poderia ser direcionada para tornar o próprio vetor resistente, interrompendo a transmissão na origem.">Insects were long assumed to lack immunological memory — no antibodies, no adaptive immune system. Yet a mosquito that survives one infection can meet the next very differently. This line asks how mosquitoes encode a prior pathogen encounter through epigenetic reprogramming of their immune cells — and whether that memory could be steered to make the vector itself resistant, interrupting transmission at its source.</p>
-        <div class="tags">
-          <span class="chip">Trained immunity</span>
-          <span class="chip">Epigenetics</span>
-          <span class="chip">Immune priming</span>
-          <span class="chip">Mosquitoes</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/27102489/" target="_blank" rel="noopener">Netea MG, Joosten LAB, Latz E, et al. <em>Trained immunity: a program of innate immune memory in health and disease.</em> Science, 2016.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/34711682/" target="_blank" rel="noopener">Gomes FM, Tyner MDW, Barletta ABF, et al. <em>Double peroxidase and histone acetyltransferase AgTip60 maintain innate immune memory in primed mosquitoes.</em> PNAS, 2021.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/36520682/" target="_blank" rel="noopener">Gomes FM, Silva M, Molina-Cruz A, Barillas-Mury C. <em>Molecular mechanisms of insect immune memory and pathogen transmission.</em> PLoS Pathogens, 2022.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Immune memory · epigenetics" data-i18n-pt="Memória imune · epigenética">Immune memory · epigenetics</div>
+        <h2 data-i18n-en="Does an insect remember an infection?" data-i18n-pt="Um inseto se lembra de uma infecção?">Does an insect remember an infection?</h2>
+        <p data-i18n-en="Insects have no antibodies and no adaptive immune system, yet a mosquito that survives one infection can meet the next differently. We described a mechanism for that memory in primed mosquitoes, in which a double peroxidase and the histone acetyltransferase AgTip60 sustain the primed state — placing epigenetic regulation at the centre of how a vector's immune response is set."
+           data-i18n-pt="Insetos não têm anticorpos nem sistema imune adaptativo e, ainda assim, um mosquito que sobrevive a uma infecção encara a próxima de forma diferente. Descrevemos um mecanismo dessa memória em mosquitos sensibilizados, no qual uma dupla peroxidase e a histona acetiltransferase AgTip60 sustentam o estado sensibilizado — colocando a regulação epigenética no centro de como a resposta imune do vetor é ajustada.">Insects have no antibodies and no adaptive immune system, yet a mosquito that survives one infection can meet the next differently. We described a mechanism for that memory in primed mosquitoes, in which a double peroxidase and the histone acetyltransferase AgTip60 sustain the primed state — placing epigenetic regulation at the centre of how a vector's immune response is set.</p>
+        <div class="tags"><span class="chip" data-i18n-en="Trained immunity" data-i18n-pt="Imunidade treinada">Trained immunity</span><span class="chip" data-i18n-en="Epigenetics" data-i18n-pt="Epigenética">Epigenetics</span><span class="chip">AgTip60</span><span class="chip" data-i18n-en="Mosquitoes" data-i18n-pt="Mosquitos">Mosquitoes</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/27102489/" target="_blank" rel="noopener">Netea MG, Joosten LAB, Latz E, et al. <em>Trained immunity: a program of innate immune memory in health and disease.</em> Science, 2016.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/34711682/" target="_blank" rel="noopener">Gomes FM, Tyner MDW, Barletta ABF, et al. <em>Double peroxidase and histone acetyltransferase AgTip60 maintain innate immune memory in primed mosquitoes.</em> PNAS, 2021.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/36520682/" target="_blank" rel="noopener">Gomes FM, Silva M, Molina-Cruz A, Barillas-Mury C. <em>Molecular mechanisms of insect immune memory and pathogen transmission.</em> PLoS Pathogens, 2022.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g01" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g01)"/>
-          <!-- Priming -> memory timeline -->
-          <g stroke="#141310" stroke-width="1" fill="none">
-            <line x1="40" y1="260" x2="360" y2="260"/>
-            <path d="M360 260 L354 256 M360 260 L354 264"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="60" y="280">T0 · NAIVE</text>
-            <text x="180" y="280" text-anchor="middle">PRIMING</text>
-            <text x="320" y="280" text-anchor="middle">RECALL</text>
-          </g>
-          <!-- Cell 1 -->
-          <circle cx="70" cy="160" r="32" fill="none" stroke="#141310" stroke-width="1.2"/>
-          <circle cx="70" cy="160" r="8" fill="#141310" opacity="0.2"/>
-          <!-- Cell 2 with pathogen -->
-          <circle cx="200" cy="140" r="38" fill="none" stroke="#F3855C" stroke-width="1.2"/>
-          <circle cx="200" cy="140" r="10" fill="#F3855C" opacity="0.4"/>
-          <circle cx="185" cy="130" r="3" fill="#F3855C"/>
-          <circle cx="210" cy="135" r="3" fill="#F3855C"/>
-          <circle cx="198" cy="155" r="3" fill="#F3855C"/>
-          <!-- Cell 3 with memory marks -->
-          <circle cx="330" cy="120" r="44" fill="none" stroke="#F3855C" stroke-width="1.4"/>
-          <circle cx="330" cy="120" r="44" fill="#F3855C" opacity="0.1"/>
-          <circle cx="330" cy="120" r="12" fill="#F3855C" opacity="0.6"/>
-          <!-- Methylation marks -->
-          <g fill="#F3855C"><circle cx="315" cy="100" r="2"/><circle cx="345" cy="105" r="2"/><circle cx="310" cy="135" r="2"/><circle cx="350" cy="140" r="2"/></g>
-          <!-- Arrows -->
-          <g stroke="#141310" stroke-width="0.8" fill="none"><path d="M104 160 L156 140"/><path d="M152 140 L158 138 L154 144"/><path d="M240 130 L286 118"/><path d="M282 118 L288 116 L284 122"/></g>
-          <!-- labels -->
-          <g font-family="Instrument Serif, serif" font-size="11" fill="#141310"><text x="70" y="212" text-anchor="middle">Naive</text><text x="200" y="202" text-anchor="middle">Primed</text><text x="330" y="188" text-anchor="middle" fill="#D9693F">Memory</text></g>
-        </svg>
-        <div class="caption"><span>FIG 01</span><span>IMMUNE PRIMING</span></div>
+        <img src="assets/research/immune-memory.webp" alt="Ilustração da linha de memória imune inata" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 01</span><span>IMMUNE MEMORY</span></div>
       </div>
     </article>
-
     <article class="research-detail">
       <div class="num">02</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Host immunometabolism" data-i18n-pt="Imunometabolismo do hospedeiro">Host immunometabolism</div>
-        <h2 data-i18n-en="Host metabolic modulation of vector competence." data-i18n-pt="Modulação metabólica do hospedeiro sobre competência vetorial.">Host metabolic modulation of vector competence.</h2>
-        <p data-i18n-en="Every blood meal is a metabolic snapshot of whoever the mosquito just bit — and obesity and diabetes now reshape the blood of billions of people. Could the metabolic state of that blood change whether the mosquito goes on to transmit a virus? This line treats host metabolic disease as an overlooked variable in arbovirus transmission, asking how altered blood chemistry rewires the mosquito gut and its susceptibility to pathogens such as Zika."
-           data-i18n-pt="Cada repasto sanguíneo é um retrato metabólico de quem o mosquito acabou de picar — e obesidade e diabetes hoje alteram o sangue de bilhões de pessoas. O estado metabólico desse sangue poderia mudar se o mosquito vai ou não transmitir um vírus? Esta linha trata a doença metabólica do hospedeiro como uma variável negligenciada na transmissão de arbovírus, investigando como uma química sanguínea alterada reconfigura o intestino do mosquito e sua suscetibilidade a patógenos como o Zika.">Every blood meal is a metabolic snapshot of whoever the mosquito just bit — and obesity and diabetes now reshape the blood of billions of people. Could the metabolic state of that blood change whether the mosquito goes on to transmit a virus? This line treats host metabolic disease as an overlooked variable in arbovirus transmission, asking how altered blood chemistry rewires the mosquito gut and its susceptibility to pathogens such as Zika.</p>
-        <div class="tags">
-          <span class="chip">Zika virus</span>
-          <span class="chip"><em>Aedes aegypti</em></span>
-          <span class="chip">Obesity</span>
-          <span class="chip">Diabetes</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/25415198/" target="_blank" rel="noopener">Sim S, Jupatanakul N, Dimopoulos G. <em>Mosquito immunity against arboviruses.</em> Viruses, 2014.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/41472722/" target="_blank" rel="noopener">Menezes A, Walter-Nuno AB, Costa-Bartuli E, et al. <em>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</em> Frontiers in Immunology, 2025.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/38184590/" target="_blank" rel="noopener">Menezes A, Peixoto M, Silva M, et al. <em>Western diet consumption by host vertebrate promotes altered gene expression on Aedes aegypti, reducing its lifespan and increasing fertility following blood feeding.</em> Parasites &amp; Vectors, 2024.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Immunometabolism" data-i18n-pt="Imunometabolismo">Immunometabolism</div>
+        <h2 data-i18n-en="What the blood meal does to the vector." data-i18n-pt="O que o repasto sanguíneo faz com o vetor.">What the blood meal does to the vector.</h2>
+        <p data-i18n-en="Every blood meal is a metabolic snapshot of whoever the mosquito just bit. We have shown that blood from diet-induced obese and diabetic mice remodels the Aedes aegypti gut and lowers Zika virus infection, and that a Western diet in the vertebrate host alters mosquito gene expression, lifespan and fertility — making host metabolic state a variable in transmission rather than a background detail."
+           data-i18n-pt="Cada repasto sanguíneo é um retrato metabólico de quem o mosquito acabou de picar. Mostramos que o sangue de camundongos obesos e diabéticos induzidos por dieta remodela o intestino de Aedes aegypti e reduz a infecção por Zika, e que uma dieta ocidental no hospedeiro vertebrado altera expressão gênica, longevidade e fertilidade do mosquito — tornando o estado metabólico do hospedeiro uma variável da transmissão, e não um detalhe de fundo.">Every blood meal is a metabolic snapshot of whoever the mosquito just bit. We have shown that blood from diet-induced obese and diabetic mice remodels the Aedes aegypti gut and lowers Zika virus infection, and that a Western diet in the vertebrate host alters mosquito gene expression, lifespan and fertility — making host metabolic state a variable in transmission rather than a background detail.</p>
+        <div class="tags"><span class="chip" data-i18n-en="Zika virus" data-i18n-pt="Vírus Zika">Zika virus</span><span class="chip"><em>Aedes aegypti</em></span><span class="chip" data-i18n-en="Obesity" data-i18n-pt="Obesidade">Obesity</span><span class="chip" data-i18n-en="Diabetes" data-i18n-pt="Diabetes">Diabetes</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/25415198/" target="_blank" rel="noopener">Sim S, Jupatanakul N, Dimopoulos G. <em>Mosquito immunity against arboviruses.</em> Viruses, 2014.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/41472722/" target="_blank" rel="noopener">Menezes A, Walter-Nuno AB, Costa-Bartuli E, et al. <em>A diet-induced obese and diabetic host phenotype reduces mosquito ZIKV infections and remodels gut metabolism.</em> Frontiers in Immunology, 2025.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/38184590/" target="_blank" rel="noopener">Menezes A, Peixoto M, Silva M, et al. <em>Western diet consumption by host vertebrate promotes altered gene expression on Aedes aegypti.</em> Parasites &amp; Vectors, 2024.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g02" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g02)"/>
-          <!-- two curves representing metabolic states -->
-          <g fill="none" stroke-width="1.5">
-            <path d="M 40 240 Q 120 140 200 160 Q 280 180 360 90" stroke="#141310"/>
-            <path d="M 40 260 Q 120 200 200 220 Q 280 240 360 180" stroke="#F3855C" stroke-dasharray="4 3"/>
-          </g>
-          <g fill="#141310"><circle cx="40" cy="240" r="3"/><circle cx="360" cy="90" r="3"/></g>
-          <g fill="#F3855C"><circle cx="40" cy="260" r="3"/><circle cx="360" cy="180" r="3"/></g>
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="40" y="290">LEAN</text>
-            <text x="360" y="290" text-anchor="end">OBESE</text>
-            <text x="365" y="95" text-anchor="end" fill="#141310">ZIKV +++</text>
-            <text x="365" y="185" text-anchor="end" fill="#D9693F">ZIKV +</text>
-          </g>
-          <g font-family="Instrument Serif, serif" font-size="11" fill="#141310">
-            <text x="200" y="30" text-anchor="middle">Vector infection rate</text>
-          </g>
-          <!-- axes -->
-          <g stroke="#141310" stroke-width="1" fill="none"><line x1="40" y1="40" x2="40" y2="270"/><line x1="40" y1="270" x2="380" y2="270"/></g>
-        </svg>
-        <div class="caption"><span>FIG 02</span><span>HOST METABOLIC AXIS</span></div>
+        <img src="assets/research/immunometabolism.webp" alt="Ilustração da linha de imunometabolismo" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 02</span><span>IMMUNOMETABOLISM</span></div>
       </div>
     </article>
-
-    <article class="research-detail">
+    <article class="research-detail" style="border-bottom:0">
       <div class="num">03</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Evolutionary immunology" data-i18n-pt="Imunologia evolutiva">Evolutionary immunology</div>
-        <h2 data-i18n-en="Evolution of innate immunity in insects." data-i18n-pt="Evolução da imunidade inata em insetos.">Evolution of innate immunity in insects.</h2>
-        <p data-i18n-en="Ideas like trained immunity and inflammation were built largely from mammalian studies — yet the molecular machinery of innate immunity is far older than vertebrates. This line traces immune components across the animal tree, from cnidarians to mammals, to ask which parts are genuinely ancient and conserved. Reading that deep history lets concepts from human immunology be tested in insects — and points to where immune memory itself may have first arisen."
-           data-i18n-pt="Ideias como imunidade treinada e inflamação foram construídas em grande parte a partir de estudos com mamíferos — mas a maquinaria molecular da imunidade inata é muito mais antiga que os vertebrados. Esta linha rastreia componentes imunes pela árvore animal, de cnidários a mamíferos, para entender quais partes são genuinamente ancestrais e conservadas. Ler essa história profunda permite testar conceitos da imunologia humana em insetos — e aponta onde a própria memória imune pode ter surgido.">Ideas like trained immunity and inflammation were built largely from mammalian studies — yet the molecular machinery of innate immunity is far older than vertebrates. This line traces immune components across the animal tree, from cnidarians to mammals, to ask which parts are genuinely ancient and conserved. Reading that deep history lets concepts from human immunology be tested in insects — and points to where immune memory itself may have first arisen.</p>
-        <div class="tags">
-          <span class="chip">Comparative</span>
-          <span class="chip">Invertebrates</span>
-          <span class="chip">TLR / NF-κB</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/15530832/" target="_blank" rel="noopener">Flajnik MF, Du Pasquier L. <em>Evolution of innate and adaptive immunity: can we draw a line?</em> Trends in Immunology, 2004.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/38281163/" target="_blank" rel="noopener">Silva RCMC, Gomes FM. <em>Evolution of the major components of innate immunity in animals.</em> Journal of Molecular Evolution, 2024.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/38573502/" target="_blank" rel="noopener">Silva RCMC, Ramos IB, Travassos LH, Mendez APG, Gomes FM. <em>Evolution of innate immunity: lessons from mammalian models shaping our current view of insect immunity.</em> Journal of Comparative Physiology B, 2024.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Comparative immunology" data-i18n-pt="Imunologia comparada">Comparative immunology</div>
+        <h2 data-i18n-en="How old are the parts of immunity?" data-i18n-pt="Qual a idade das peças da imunidade?">How old are the parts of immunity?</h2>
+        <p data-i18n-en="Ideas such as trained immunity were built largely from mammalian studies, yet the machinery of innate immunity is far older than vertebrates. We have traced the major components of innate immunity across animals and examined what mammalian models can and cannot tell us about insects — the framework that lets findings move between the two."
+           data-i18n-pt="Ideias como imunidade treinada foram construídas em grande parte a partir de modelos mamíferos, mas a maquinaria da imunidade inata é muito mais antiga que os vertebrados. Rastreamos os principais componentes da imunidade inata nos animais e examinamos o que modelos mamíferos podem — e não podem — dizer sobre insetos: o arcabouço que permite às descobertas transitarem entre os dois.">Ideas such as trained immunity were built largely from mammalian studies, yet the machinery of innate immunity is far older than vertebrates. We have traced the major components of innate immunity across animals and examined what mammalian models can and cannot tell us about insects — the framework that lets findings move between the two.</p>
+        <div class="tags"><span class="chip" data-i18n-en="Comparative" data-i18n-pt="Comparada">Comparative</span><span class="chip" data-i18n-en="Invertebrates" data-i18n-pt="Invertebrados">Invertebrates</span><span class="chip">TLR / NF-κB</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/15530832/" target="_blank" rel="noopener">Flajnik MF, Du Pasquier L. <em>Evolution of innate and adaptive immunity: can we draw a line?</em> Trends in Immunology, 2004.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/38281163/" target="_blank" rel="noopener">Silva RCMC, Gomes FM. <em>Evolution of the major components of innate immunity in animals.</em> Journal of Molecular Evolution, 2024.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/38573502/" target="_blank" rel="noopener">Silva RCMC, Ramos IB, Travassos LH, Mendez APG, Gomes FM. <em>Evolution of innate immunity: lessons from mammalian models shaping our current view of insect immunity.</em> Journal of Comparative Physiology B, 2024.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g03" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g03)"/>
-          <!-- phylogenetic tree -->
-          <g fill="none" stroke="#141310" stroke-width="1.2">
-            <path d="M 40 160 L 120 160"/>
-            <path d="M 120 80 L 120 240"/>
-            <path d="M 120 80 L 200 80"/>
-            <path d="M 120 160 L 200 160"/>
-            <path d="M 120 240 L 200 240"/>
-            <path d="M 200 80 L 200 60"/>
-            <path d="M 200 80 L 200 100"/>
-            <path d="M 200 60 L 320 60"/>
-            <path d="M 200 100 L 320 100"/>
-            <path d="M 200 160 L 320 160"/>
-            <path d="M 200 240 L 320 240"/>
-          </g>
-          <g fill="#F3855C"><circle cx="320" cy="60" r="4"/><circle cx="320" cy="100" r="4"/><circle cx="320" cy="160" r="4"/><circle cx="320" cy="240" r="4"/></g>
-          <g font-family="Instrument Serif, serif" font-size="12" fill="#141310">
-            <text x="330" y="64">Mammals</text>
-            <text x="330" y="104">Birds</text>
-            <text x="330" y="164">Insects</text>
-            <text x="330" y="244">Cnidarians</text>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="40" y="140">COMMON</text>
-            <text x="40" y="152">ANCESTOR</text>
-          </g>
-        </svg>
-        <div class="caption"><span>FIG 03</span><span>PHYLOGENY · INNATE IMMUNE ORIGIN</span></div>
+        <img src="assets/research/evolution.webp" alt="Ilustração da linha de imunologia comparada" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 03</span><span>COMPARATIVE IMMUNITY</span></div>
       </div>
     </article>
-
+    </div>
+    <div class="group-head">
+      <div class="kicker" data-i18n-en="Derived lines" data-i18n-pt="Linhas derivadas">Derived lines</div>
+      <h2 data-i18n-html data-i18n-en="Where that question <em>travels</em>." data-i18n-pt="Para onde essa pergunta <em>viaja</em>.">Where that question <em>travels</em>.</h2>
+      <p data-i18n-en="The same question — what an immune response does and what it costs — changes shape depending on the scale you ask it at: a whole country, a single epithelium, or a crop pest."
+         data-i18n-pt="A mesma pergunta — o que uma resposta imune faz e quanto ela custa — muda de forma conforme a escala em que é feita: um país inteiro, um único epitélio, ou uma praga agrícola.">The same question — what an immune response does and what it costs — changes shape depending on the scale you ask it at: a whole country, a single epithelium, or a crop pest.</p>
+    </div>
     <article class="research-detail">
       <div class="num">04</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px">Cell biology</div>
-        <h2 data-i18n-en="Inorganic polyphosphate biology." data-i18n-pt="Biologia do polifosfato inorgânico.">Inorganic polyphosphate biology.</h2>
-        <p data-i18n-en="Inorganic polyphosphate (polyP) is one of life's oldest molecules — a simple chain of phosphates found from bacteria to human cells — yet what it does inside insects is still largely unread. This line follows where polyP accumulates and how cells interpret it: as a phosphate reservoir, a buffer against heavy metals, and a partner in mobilizing the yolk that fuels the embryo. Even seeing it is a challenge, driving DAPI-based microscopy approaches to map the molecule in situ."
-           data-i18n-pt="O polifosfato inorgânico (polyP) é uma das moléculas mais antigas da vida — uma simples cadeia de fosfatos presente de bactérias a células humanas — mas o que ele faz dentro dos insetos ainda é, em grande parte, desconhecido. Esta linha acompanha onde o polyP se acumula e como as células o interpretam: como reservatório de fosfato, tampão contra metais pesados e parceiro na mobilização do vitelo que alimenta o embrião. Até enxergá-lo é um desafio, o que impulsiona abordagens de microscopia baseadas em DAPI para mapear a molécula in situ.">Inorganic polyphosphate (polyP) is one of life's oldest molecules — a simple chain of phosphates found from bacteria to human cells — yet what it does inside insects is still largely unread. This line follows where polyP accumulates and how cells interpret it: as a phosphate reservoir, a buffer against heavy metals, and a partner in mobilizing the yolk that fuels the embryo. Even seeing it is a challenge, driving DAPI-based microscopy approaches to map the molecule in situ.</p>
-        <div class="tags">
-          <span class="chip">polyP</span>
-          <span class="chip">DAPI</span>
-          <span class="chip">Phosphate sensing</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/10872445/" target="_blank" rel="noopener">Kornberg A, Rao NN, Ault-Riché D. <em>Inorganic polyphosphate: a molecule of many functions.</em> Annual Review of Biochemistry, 1999.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/30425096/" target="_blank" rel="noopener">Xie L, Jakob U. <em>Inorganic polyphosphate, a multifunctional polyanionic protein scaffold.</em> Journal of Biological Chemistry, 2019.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/24441187/" target="_blank" rel="noopener">Gomes FM, Ramos IB, Wendt C, et al. <em>New insights into in situ microscopic visualization and quantification of inorganic polyphosphate stores by DAPI-staining.</em> European Journal of Histochemistry, 2013.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/35239748/" target="_blank" rel="noopener">Vila T, Frases S, Gomes FM. <em>Lessons from protozoans: phosphate sensing and polyphosphate storage in fungi.</em> PLoS Pathogens, 2022.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Epidemiological modelling" data-i18n-pt="Modelagem epidemiológica">Epidemiological modelling</div>
+        <h2 data-i18n-en="Applying epidemiological models to vector transmission." data-i18n-pt="Aplicação de modelos epidemiológicos para transmissão vetorial.">Applying epidemiological models to vector transmission.</h2>
+        <p data-i18n-en="Where a mosquito can live, how many there are, and where people actually fall ill are three different maps. This line applies species distribution and statistical modelling to vector-borne transmission, combining climatic, environmental and epidemiological data. The aim is to give the questions asked at the bench a geographic frame."
+           data-i18n-pt="Onde o mosquito consegue viver, quantos existem e onde as pessoas de fato adoecem são três mapas diferentes. Esta linha aplica modelagem de distribuição de espécies e modelagem estatística à transmissão por vetores, combinando dados climáticos, ambientais e epidemiológicos. O objetivo é dar moldura geográfica às perguntas feitas na bancada.">Where a mosquito can live, how many there are, and where people actually fall ill are three different maps. This line applies species distribution and statistical modelling to vector-borne transmission, combining climatic, environmental and epidemiological data. The aim is to give the questions asked at the bench a geographic frame.</p>
+        <div class="tags"><span class="chip">BRT / SDM</span><span class="chip"><em>Aedes aegypti</em></span><span class="chip" data-i18n-en="Dengue" data-i18n-pt="Dengue">Dengue</span><span class="chip" data-i18n-en="Spatial modelling" data-i18n-pt="Modelagem espacial">Spatial modelling</span><span class="chip" data-i18n-en="Climate" data-i18n-pt="Clima">Climate</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/26126267/" target="_blank" rel="noopener">Kraemer MU, Sinka ME, Duda KA, et al. <em>The global distribution of the arbovirus vectors Aedes aegypti and Ae. albopictus.</em> eLife, 2015.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/31182801/" target="_blank" rel="noopener">Messina JP, Brady OJ, Golding N, et al. <em>The current and future global distribution and population at risk of dengue.</em> Nature Microbiology, 2019.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g04" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g04)"/>
-          <!-- chain of phosphates -->
-          <g stroke="#141310" stroke-width="1.2" fill="none">
-            <line x1="60" y1="160" x2="340" y2="160"/>
-          </g>
-          <g>
-            <circle cx="60" cy="160" r="14" fill="#F3855C" opacity="0.15" stroke="#F3855C" stroke-width="1"/>
-            <circle cx="120" cy="160" r="14" fill="#F3855C" opacity="0.25" stroke="#F3855C" stroke-width="1"/>
-            <circle cx="180" cy="160" r="14" fill="#F3855C" opacity="0.4" stroke="#F3855C" stroke-width="1"/>
-            <circle cx="240" cy="160" r="14" fill="#F3855C" opacity="0.55" stroke="#F3855C" stroke-width="1"/>
-            <circle cx="300" cy="160" r="14" fill="#F3855C" opacity="0.8" stroke="#F3855C" stroke-width="1"/>
-            <circle cx="340" cy="160" r="18" fill="#F3855C" opacity="0.9"/>
-          </g>
-          <g font-family="Instrument Serif, serif" font-size="14" fill="white" text-anchor="middle">
-            <text x="60" y="165">P</text><text x="120" y="165">P</text><text x="180" y="165">P</text><text x="240" y="165">P</text><text x="300" y="165">P</text><text x="340" y="165">P</text>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="200" y="220" text-anchor="middle">POLYPHOSPHATE CHAIN (P_n)</text>
-            <text x="60" y="120" text-anchor="middle">MONOMER</text>
-            <text x="340" y="120" text-anchor="middle" fill="#D9693F">STORAGE</text>
-          </g>
-        </svg>
-        <div class="caption"><span>FIG 04</span><span>POLYPHOSPHATE · P_n</span></div>
+        <img src="assets/research/epidemiology.webp" alt="Ilustração da linha de modelagem epidemiológica" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 04</span><span>EPIDEMIOLOGICAL MODELLING</span></div>
       </div>
     </article>
-
     <article class="research-detail">
       <div class="num">05</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Insect physiology" data-i18n-pt="Fisiologia de insetos">Insect physiology</div>
-        <h2 data-i18n-en="Invertebrate gut physiology &amp; ultrastructure." data-i18n-pt="Fisiologia e ultraestrutura do intestino de invertebrados.">Invertebrate gut physiology &amp; ultrastructure.</h2>
-        <p data-i18n-en="The midgut is the first thing a virus, a parasite, or an insecticide meets after an insect feeds — the frontier where infection and digestion are decided. This line examines how that tissue is built and how it works across very different insects, from the secretory cells of caterpillar guts to the oxidant chemistry of termite digestion. The same cell biology that governs how a pest handles its food shapes whether a vector can be infected — and where it might be stopped."
-           data-i18n-pt="O intestino médio é a primeira coisa que um vírus, um parasita ou um inseticida encontra depois que um inseto se alimenta — a fronteira onde infecção e digestão são decididas. Esta linha examina como esse tecido é construído e como funciona em insetos muito diferentes, das células secretoras do intestino de lagartas à química oxidante da digestão de cupins. A mesma biologia celular que governa como uma praga lida com o alimento determina se um vetor pode ser infectado — e onde ele poderia ser barrado.">The midgut is the first thing a virus, a parasite, or an insecticide meets after an insect feeds — the frontier where infection and digestion are decided. This line examines how that tissue is built and how it works across very different insects, from the secretory cells of caterpillar guts to the oxidant chemistry of termite digestion. The same cell biology that governs how a pest handles its food shapes whether a vector can be infected — and where it might be stopped.</p>
-        <div class="tags">
-          <span class="chip">Midgut</span>
-          <span class="chip">Ultrastructure</span>
-          <span class="chip">LUCHM</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/32203883/" target="_blank" rel="noopener">Terra WR, Ferreira C. <em>Evolutionary trends of digestion and absorption in the major insect orders.</em> Arthropod Structure &amp; Development, 2020.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/23397424/" target="_blank" rel="noopener">Gomes FM, Carvalho DB, Machado EA, Miranda K. <em>Ultrastructural and functional analysis of secretory goblet cells in the midgut of the lepidopteran Anticarsia gemmatalis.</em> Cell &amp; Tissue Research, 2013.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Cell biology · ultrastructure" data-i18n-pt="Biologia celular · ultraestrutura">Cell biology · ultrastructure</div>
+        <h2 data-i18n-en="The gut, seen up close." data-i18n-pt="O intestino, visto de perto.">The gut, seen up close.</h2>
+        <p data-i18n-en="The midgut is the first thing a pathogen meets after an insect feeds — the frontier where digestion and infection are decided. We work on how that tissue is built and how it functions, from the secretory goblet cells we characterised in the velvetbean caterpillar to the volume and super-resolution microscopy now used to reconstruct it in three dimensions."
+           data-i18n-pt="O intestino médio é a primeira coisa que um patógeno encontra depois que o inseto se alimenta — a fronteira onde digestão e infecção são decididas. Trabalhamos em como esse tecido é construído e como funciona, das células caliciformes secretoras que caracterizamos na lagarta-da-soja à microscopia de volume e de super-resolução hoje usada para reconstruí-lo em três dimensões.">The midgut is the first thing a pathogen meets after an insect feeds — the frontier where digestion and infection are decided. We work on how that tissue is built and how it functions, from the secretory goblet cells we characterised in the velvetbean caterpillar to the volume and super-resolution microscopy now used to reconstruct it in three dimensions.</p>
+        <div class="tags"><span class="chip" data-i18n-en="Midgut" data-i18n-pt="Intestino médio">Midgut</span><span class="chip" data-i18n-en="Ultrastructure" data-i18n-pt="Ultraestrutura">Ultrastructure</span><span class="chip">FIB-SEM · SBF-SEM</span><span class="chip" data-i18n-en="Electron microscopy" data-i18n-pt="Microscopia eletrônica">Electron microscopy</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/32203883/" target="_blank" rel="noopener">Terra WR, Ferreira C. <em>Evolutionary trends of digestion and absorption in the major insect orders.</em> Arthropod Structure &amp; Development, 2020.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/23397424/" target="_blank" rel="noopener">Gomes FM, Carvalho DB, Machado EA, Miranda K. <em>Ultrastructural and functional analysis of secretory goblet cells in the midgut of the lepidopteran Anticarsia gemmatalis.</em> Cell &amp; Tissue Research, 2013.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g05" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g05)"/>
-          <!-- gut cross-section -->
-          <g stroke="#141310" stroke-width="1.2" fill="none">
-            <path d="M 60 100 L 340 100 L 340 220 L 60 220 Z"/>
-            <path d="M 60 140 L 340 140"/>
-            <path d="M 60 180 L 340 180"/>
-          </g>
-          <!-- villi/cells -->
-          <g fill="#F3855C" opacity="0.5">
-            <rect x="80" y="100" width="12" height="40"/>
-            <rect x="110" y="100" width="12" height="40"/>
-            <rect x="140" y="100" width="12" height="40"/>
-            <rect x="170" y="100" width="12" height="40"/>
-            <rect x="200" y="100" width="12" height="40"/>
-            <rect x="230" y="100" width="12" height="40"/>
-            <rect x="260" y="100" width="12" height="40"/>
-            <rect x="290" y="100" width="12" height="40"/>
-            <rect x="320" y="100" width="12" height="40"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="200" y="90" text-anchor="middle">LUMEN</text>
-            <text x="200" y="160" text-anchor="middle">EPITHELIUM</text>
-            <text x="200" y="200" text-anchor="middle">BASAL LAMINA</text>
-            <text x="200" y="240" text-anchor="middle">HEMOCOEL</text>
-          </g>
-        </svg>
-        <div class="caption"><span>FIG 05</span><span>MIDGUT · CROSS-SECTION</span></div>
+        <img src="assets/research/ultrastructure.webp" alt="Ilustração da linha de ultraestrutura" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 05</span><span>ULTRASTRUCTURE</span></div>
       </div>
     </article>
-
-    <article class="research-detail">
+    <article class="research-detail" style="border-bottom:0">
       <div class="num">06</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Epidemiological modelling" data-i18n-pt="Modelagem epidemiológica">Epidemiological modelling</div>
-        <h2 data-i18n-en="Applying epidemiological models to vector transmission." data-i18n-pt="Aplicação de modelos epidemiológicos para transmissão vetorial.">Applying epidemiological models to vector transmission.</h2>
-        <p data-i18n-en="Where a mosquito can live, how many there are, and where people actually fall ill are three different maps. This line applies species distribution and statistical modelling to vector-borne transmission, combining climatic, environmental and epidemiological data to describe vector suitability and disease patterns at national scale. The aim is to give the questions asked at the bench a geographic frame — and to help decide where fieldwork is worth doing."
-           data-i18n-pt="Onde o mosquito consegue viver, quantos existem e onde as pessoas de fato adoecem são três mapas diferentes. Esta linha aplica modelagem de distribuição de espécies e modelagem estatística à transmissão por vetores, combinando dados climáticos, ambientais e epidemiológicos para descrever adequabilidade vetorial e padrões de doença em escala nacional. O objetivo é dar moldura geográfica às perguntas feitas na bancada — e ajudar a decidir onde vale a pena ir a campo.">Where a mosquito can live, how many there are, and where people actually fall ill are three different maps. This line applies species distribution and statistical modelling to vector-borne transmission, combining climatic, environmental and epidemiological data to describe vector suitability and disease patterns at national scale. The aim is to give the questions asked at the bench a geographic frame — and to help decide where fieldwork is worth doing.</p>
-        <div class="tags">
-          <span class="chip">BRT / SDM</span>
-          <span class="chip"><em>Aedes aegypti</em></span>
-          <span class="chip" data-i18n-en="Dengue" data-i18n-pt="Dengue">Dengue</span>
-          <span class="chip" data-i18n-en="Spatial modelling" data-i18n-pt="Modelagem espacial">Spatial modelling</span>
-          <span class="chip" data-i18n-en="Climate" data-i18n-pt="Clima">Climate</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/26126267/" target="_blank" rel="noopener">Kraemer MU, Sinka ME, Duda KA, et al. <em>The global distribution of the arbovirus vectors Aedes aegypti and Ae. albopictus.</em> eLife, 2015.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/31182801/" target="_blank" rel="noopener">Messina JP, Brady OJ, Golding N, et al. <em>The current and future global distribution and population at risk of dengue.</em> Nature Microbiology, 2019.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/23563266/" target="_blank" rel="noopener">Bhatt S, Gething PW, Brady OJ, et al. <em>The global distribution and burden of dengue.</em> Nature, 2013.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Pest models · biological control" data-i18n-pt="Modelos de praga · controle biológico">Pest models · biological control</div>
+        <h2 data-i18n-en="Immunity as a lever for pest control." data-i18n-pt="A imunidade como alavanca no controle de pragas.">Immunity as a lever for pest control.</h2>
+        <p data-i18n-en="The velvetbean caterpillar Anticarsia gemmatalis, a major soybean pest, is where the group's immunology meets agriculture. We have characterised its midgut receptors for the Bacillus thuringiensis Cry1Ac toxin and an antimicrobial peptide from the insect itself. The open question is how far its immune and barrier responses can be modulated to make biological control more effective and more durable."
+           data-i18n-pt="A lagarta-da-soja Anticarsia gemmatalis, praga importante da soja, é onde a imunologia do grupo encontra a agricultura. Caracterizamos seus receptores intestinais para a toxina Cry1Ac de Bacillus thuringiensis e um peptídeo antimicrobiano do próprio inseto. A pergunta aberta é até onde suas respostas imunes e de barreira podem ser moduladas para tornar o controle biológico mais eficaz e mais duradouro.">The velvetbean caterpillar Anticarsia gemmatalis, a major soybean pest, is where the group's immunology meets agriculture. We have characterised its midgut receptors for the Bacillus thuringiensis Cry1Ac toxin and an antimicrobial peptide from the insect itself. The open question is how far its immune and barrier responses can be modulated to make biological control more effective and more durable.</p>
+        <div class="tags"><span class="chip"><em>Anticarsia gemmatalis</em></span><span class="chip"><em>Bacillus thuringiensis</em></span><span class="chip" data-i18n-en="Insect immunity" data-i18n-pt="Imunidade de insetos">Insect immunity</span><span class="chip" data-i18n-en="Biological control" data-i18n-pt="Controle biológico">Biological control</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/27131327/" target="_blank" rel="noopener">Lu HL, St Leger RJ. <em>Insect immunity to entomopathogenic fungi.</em> Advances in Genetics, 2016.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/23752438/" target="_blank" rel="noopener">Tabashnik BE, Brévault T, Carrière Y. <em>Insect resistance to Bt crops: lessons from the first billion acres.</em> Nature Biotechnology, 2013.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/39534858/" target="_blank" rel="noopener">Lanzaro MD, Padilha I, Ramos LFC, et al. <em>Cry1Ac toxin binding in the velvetbean caterpillar Anticarsia gemmatalis: study of midgut aminopeptidases N.</em> Frontiers in Physiology, 2024.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/33796137/" target="_blank" rel="noopener">Ramos LFC, Rangel JHO, Andrade GC, et al. <em>Identification and recombinant expression of an antimicrobial peptide (cecropin B-like) from the soybean pest Anticarsia gemmatalis.</em> Journal of Venomous Animals and Toxins, 2021.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="g06" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern>
-            <linearGradient id="sg06" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#F3855C" stop-opacity="0.05"/>
-              <stop offset="100%" stop-color="#F3855C" stop-opacity="0.42"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="320" fill="url(#g06)"/>
-
-          <!-- inputs stack -->
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="40" y="52">INPUT LAYERS</text>
-          </g>
-          <g stroke="#141310" stroke-width="1" fill="none" opacity="0.8">
-            <path d="M40 76 L118 62 L158 78 L80 92 Z"/>
-            <path d="M40 100 L118 86 L158 102 L80 116 Z"/>
-            <path d="M40 124 L118 110 L158 126 L80 140 Z"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#6E6960" letter-spacing="1">
-            <text x="166" y="80">CLIMATE</text>
-            <text x="166" y="104">ENVIRONMENT</text>
-            <text x="166" y="128">OCCURRENCE</text>
-          </g>
-
-          <!-- ensemble of trees -->
-          <g stroke="#141310" stroke-width="0.9" fill="none" opacity="0.75">
-            <path d="M100 168 L100 182 M100 182 L88 196 M100 182 L112 196 M88 196 L80 208 M88 196 L96 208 M112 196 L106 208 M112 196 L120 208"/>
-          </g>
-          <g stroke="#141310" stroke-width="0.9" fill="none" opacity="0.38">
-            <path d="M132 172 L132 184 M132 184 L122 196 M132 184 L142 196"/>
-            <path d="M68 172 L68 184 M68 184 L58 196 M68 184 L78 196"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#6E6960" letter-spacing="1">
-            <text x="100" y="228" text-anchor="middle">MODEL ENSEMBLE</text>
-          </g>
-
-          <!-- arrow -->
-          <g stroke="#F3855C" stroke-width="1.3" fill="none">
-            <path d="M176 190 L212 190"/><path d="M204 184 L212 190 L204 196"/>
-          </g>
-
-          <!-- output surface -->
-          <rect x="230" y="70" width="136" height="140" fill="url(#sg06)" stroke="#141310" stroke-width="1"/>
-          <g fill="none" stroke="#F3855C" stroke-width="1" opacity="0.65">
-            <path d="M230 186 Q272 150 300 156 Q338 164 366 122"/>
-            <path d="M230 160 Q274 122 302 130 Q340 140 366 96"/>
-            <path d="M230 134 Q276 96 304 104 Q342 114 366 72"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#6E6960" letter-spacing="1">
-            <text x="298" y="228" text-anchor="middle">PREDICTED SUITABILITY</text>
-            <text x="374" y="80" fill="#D9693F">HIGH</text>
-            <text x="374" y="204">LOW</text>
-          </g>
-          <g font-family="Instrument Serif, serif" font-size="12" fill="#141310">
-            <text x="200" y="278" text-anchor="middle">data layers → ensemble → risk surface</text>
-          </g>
-        </svg>
-        <div class="caption"><span>FIG 06</span><span>SPECIES DISTRIBUTION MODELLING</span></div>
+        <img src="assets/research/pest-models.webp" alt="Ilustração da linha de modelos de praga" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 06</span><span>PEST MODELS</span></div>
       </div>
     </article>
-
+    <div class="group-head">
+      <div class="kicker" data-i18n-en="Additional line" data-i18n-pt="Linha adicional">Additional line</div>
+      <h2 data-i18n-html data-i18n-en="An older <em>molecule</em>, running underneath." data-i18n-pt="Uma <em>molécula</em> mais antiga, correndo por baixo.">An older <em>molecule</em>, running underneath.</h2>
+      <p data-i18n-en="One thread in the group predates the rest and cuts across it, sitting at the meeting point of cell physiology, metabolism, virulence and immunity."
+         data-i18n-pt="Um fio do grupo é anterior aos demais e atravessa todos eles, no ponto de encontro entre fisiologia celular, metabolismo, virulência e imunidade.">One thread in the group predates the rest and cuts across it, sitting at the meeting point of cell physiology, metabolism, virulence and immunity.</p>
+    </div>
     <article class="research-detail" style="border-bottom:0">
       <div class="num">07</div>
       <div>
-        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Insect immunity · biological pest control" data-i18n-pt="Imunidade de insetos · controle biológico">Insect immunity · biological pest control</div>
-        <h2 data-i18n-en="Insect immunity as a lever for pest control." data-i18n-pt="A imunidade do inseto como alavanca no controle de pragas.">Insect immunity as a lever for pest control.</h2>
-        <p data-i18n-en="Agricultural pests are increasingly managed with living agents — Bacillus thuringiensis, entomopathogenic fungi — rather than broad-spectrum chemistry. How well those agents work depends on the insect itself: its physical barriers and its immune responses decide whether an infection takes hold at all. This line studies immune signalling in agricultural pests and asks how it can be modulated to make biological control more effective and more durable."
-           data-i18n-pt="Pragas agrícolas são cada vez mais manejadas com agentes vivos — Bacillus thuringiensis, fungos entomopatogênicos — em vez de química de amplo espectro. O quanto esses agentes funcionam depende do próprio inseto: suas barreiras físicas e suas respostas imunes decidem se a infecção chega a se estabelecer. Esta linha estuda a sinalização imune em pragas agrícolas e investiga como modulá-la para tornar o controle biológico mais eficaz e mais duradouro.">Agricultural pests are increasingly managed with living agents — Bacillus thuringiensis, entomopathogenic fungi — rather than broad-spectrum chemistry. How well those agents work depends on the insect itself: its physical barriers and its immune responses decide whether an infection takes hold at all. This line studies immune signalling in agricultural pests and asks how it can be modulated to make biological control more effective and more durable.</p>
-        <div class="tags">
-          <span class="chip"><em>Anticarsia gemmatalis</em></span>
-          <span class="chip"><em>Tribolium castaneum</em></span>
-          <span class="chip" data-i18n-en="Insect immunity" data-i18n-pt="Imunidade de insetos">Insect immunity</span>
-          <span class="chip"><em>Bacillus thuringiensis</em></span>
-          <span class="chip" data-i18n-en="Entomopathogenic fungi" data-i18n-pt="Fungos entomopatogênicos">Entomopathogenic fungi</span>
-          <span class="chip" data-i18n-en="Biological control" data-i18n-pt="Controle biológico">Biological control</span>
-        </div>
-        <div class="refs">
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/27131327/" target="_blank" rel="noopener">Lu HL, St Leger RJ. <em>Insect immunity to entomopathogenic fungi.</em> Advances in Genetics, 2016.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/23752438/" target="_blank" rel="noopener">Tabashnik BE, Brévault T, Carrière Y. <em>Insect resistance to Bt crops: lessons from the first billion acres.</em> Nature Biotechnology, 2013.</a></li>
-            </ul>
-          </div>
-          <div class="refs-group">
-            <span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span>
-            <ul>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/39534858/" target="_blank" rel="noopener">Lanzaro MD, Padilha I, Ramos LFC, et al. <em>Cry1Ac toxin binding in the velvetbean caterpillar Anticarsia gemmatalis: study of midgut aminopeptidases N.</em> Frontiers in Physiology, 2024.</a></li>
-              <li><a href="https://pubmed.ncbi.nlm.nih.gov/33796137/" target="_blank" rel="noopener">Ramos LFC, Rangel JHO, Andrade GC, et al. <em>Identification and recombinant expression of an antimicrobial peptide (cecropin B-like) from the soybean pest Anticarsia gemmatalis.</em> Journal of Venomous Animals and Toxins, 2021.</a></li>
-            </ul>
-          </div>
-        </div>
+        <div class="eyebrow coral" style="margin-bottom:12px" data-i18n-en="Cell physiology · metabolism · virulence" data-i18n-pt="Fisiologia celular · metabolismo · virulência">Cell physiology · metabolism · virulence</div>
+        <h2 data-i18n-en="Inorganic polyphosphate." data-i18n-pt="Polifosfato inorgânico.">Inorganic polyphosphate.</h2>
+        <p data-i18n-en="Inorganic polyphosphate is one of life's oldest molecules — a simple chain of phosphates found from bacteria to human cells — and it sits where cell physiology, metabolism, virulence and immunity meet. Our work introduced a DAPI-based method to see and quantify polyP stores in situ, showed it inhibits a protease activity in insect eggs, and examined phosphate sensing and polyP storage in fungi, where it bears on virulence."
+           data-i18n-pt="O polifosfato inorgânico é uma das moléculas mais antigas da vida — uma simples cadeia de fosfatos presente de bactérias a células humanas — e fica no ponto onde fisiologia celular, metabolismo, virulência e imunidade se encontram. Nosso trabalho introduziu um método baseado em DAPI para visualizar e quantificar estoques de polyP in situ, mostrou que ele inibe uma atividade de protease em ovos de inseto, e examinou o sensoriamento de fosfato e o armazenamento de polyP em fungos, onde toca a virulência.">Inorganic polyphosphate is one of life's oldest molecules — a simple chain of phosphates found from bacteria to human cells — and it sits where cell physiology, metabolism, virulence and immunity meet. Our work introduced a DAPI-based method to see and quantify polyP stores in situ, showed it inhibits a protease activity in insect eggs, and examined phosphate sensing and polyP storage in fungi, where it bears on virulence.</p>
+        <div class="tags"><span class="chip">polyP</span><span class="chip">DAPI</span><span class="chip" data-i18n-en="Phosphate sensing" data-i18n-pt="Sensoriamento de fosfato">Phosphate sensing</span><span class="chip" data-i18n-en="Virulence" data-i18n-pt="Virulência">Virulence</span></div>
+        <div class="refs"><div class="refs-group"><span class="refs-label" data-i18n-en="Key reviews" data-i18n-pt="Revisões-chave">Key reviews</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/10872445/" target="_blank" rel="noopener">Kornberg A, Rao NN, Ault-Riché D. <em>Inorganic polyphosphate: a molecule of many functions.</em> Annual Review of Biochemistry, 1999.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/30425096/" target="_blank" rel="noopener">Xie L, Jakob U. <em>Inorganic polyphosphate, a multifunctional polyanionic protein scaffold.</em> Journal of Biological Chemistry, 2019.</a></li></ul></div><div class="refs-group"><span class="refs-label" data-i18n-en="From the group" data-i18n-pt="Do grupo">From the group</span><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/24441187/" target="_blank" rel="noopener">Gomes FM, Ramos IB, Wendt C, et al. <em>New insights into the in situ microscopic visualization and quantification of inorganic polyphosphate stores by DAPI-staining.</em> European Journal of Histochemistry, 2013.</a></li><li><a href="https://pubmed.ncbi.nlm.nih.gov/35239748/" target="_blank" rel="noopener">Vila T, Frases S, Gomes FM. <em>Lessons from protozoans: phosphate sensing and polyphosphate storage in fungi.</em> PLoS Pathogens, 2022.</a></li></ul></div></div>
       </div>
       <div class="diagram-box">
-        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="g07" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#E5DFD4" stroke-width="0.5"/></pattern></defs>
-          <rect width="400" height="320" fill="url(#g07)"/>
-
-          <!-- biological agents -->
-          <g font-family="JetBrains Mono, monospace" font-size="8" fill="#6E6960" letter-spacing="1">
-            <text x="40" y="44">BIOLOGICAL AGENT</text>
-          </g>
-          <g fill="#F3855C">
-            <circle cx="56" cy="72" r="5"/><circle cx="82" cy="64" r="4"/><circle cx="106" cy="74" r="5"/>
-          </g>
-          <g stroke="#F3855C" stroke-width="1" fill="none" opacity="0.7">
-            <path d="M56 84 L64 116"/><path d="M82 76 L84 116"/><path d="M106 86 L100 116"/>
-          </g>
-
-          <!-- host defence layers -->
-          <g stroke="#141310" stroke-width="1.4" fill="none">
-            <line x1="34" y1="124" x2="366" y2="124"/>
-            <line x1="34" y1="140" x2="366" y2="140"/>
-          </g>
-          <g stroke="#141310" stroke-width="0.7" opacity="0.4" fill="none">
-            <line x1="52" y1="124" x2="52" y2="140"/><line x1="94" y1="124" x2="94" y2="140"/>
-            <line x1="136" y1="124" x2="136" y2="140"/><line x1="178" y1="124" x2="178" y2="140"/>
-            <line x1="220" y1="124" x2="220" y2="140"/><line x1="262" y1="124" x2="262" y2="140"/>
-            <line x1="304" y1="124" x2="304" y2="140"/><line x1="346" y1="124" x2="346" y2="140"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#6E6960" letter-spacing="1">
-            <text x="40" y="158">PHYSICAL BARRIER</text>
-          </g>
-
-          <!-- immune effectors below the barrier -->
-          <g fill="#F3855C" opacity="0.75">
-            <circle cx="70" cy="176" r="3"/><circle cx="104" cy="182" r="2.4"/><circle cx="140" cy="174" r="3"/>
-            <circle cx="176" cy="181" r="2.4"/><circle cx="212" cy="175" r="3"/><circle cx="248" cy="182" r="2.4"/>
-            <circle cx="284" cy="175" r="3"/><circle cx="320" cy="181" r="2.4"/>
-          </g>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#D9693F" letter-spacing="1">
-            <text x="40" y="202">IMMUNE RESPONSE</text>
-          </g>
-
-          <!-- efficacy curve: control efficacy falls as immune response rises -->
-          <g stroke="#141310" stroke-width="1" fill="none">
-            <line x1="60" y1="226" x2="60" y2="288"/><line x1="60" y1="288" x2="356" y2="288"/>
-          </g>
-          <path d="M66 234 Q160 246 226 264 Q296 282 350 286" fill="none" stroke="#F3855C" stroke-width="1.6"/>
-          <circle cx="66" cy="234" r="3.2" fill="#F3855C"/>
-          <circle cx="350" cy="286" r="3.2" fill="#141310" opacity="0.6"/>
-          <g font-family="JetBrains Mono, monospace" font-size="7" fill="#6E6960" letter-spacing="1">
-            <text x="66" y="222">CONTROL EFFICACY</text>
-            <text x="356" y="304" text-anchor="end">IMMUNE RESPONSE →</text>
-          </g>
-        </svg>
-        <div class="caption"><span>FIG 07</span><span>IMMUNITY · BIOLOGICAL CONTROL</span></div>
+        <img src="assets/research/polyphosphate.webp" alt="Ilustração da linha de polifosfato inorgânico" loading="lazy" decoding="async"/>
+        <div class="caption"><span>FIG 07</span><span>POLYPHOSPHATE</span></div>
       </div>
     </article>
   </div>
