@@ -95,6 +95,7 @@ function renderNav(active) {
           ${link('team','team.html','Team','Equipe')}
           ${link('publications','publications.html','Publications','Publicações')}
           ${link('news','news.html','News','Notícias')}
+          ${link('opportunities','opportunities.html','Opportunities','Oportunidades')}
           <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.2 17.2l1.4 1.4M18.6 5.4l-1.4 1.4M6.8 17.2l-1.4 1.4"/></svg>
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
@@ -115,6 +116,7 @@ function renderNav(active) {
         <a href="team.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Equipe':'Team'}</a>
         <a href="publications.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Publicações':'Publications'}</a>
         <a href="news.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Notícias':'News'}</a>
+        <a href="opportunities.html" onclick="toggleMobileMenu()" style="font-family:'Instrument Serif',serif;font-size:40px;letter-spacing:-.02em;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);line-height:1.1;text-decoration:none">${l==='pt'?'Oportunidades':'Opportunities'}</a>
       </div>
       <div style="display:flex;align-items:center;gap:12px;margin-top:auto;flex-wrap:wrap">
         <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:100px;padding:4px;font-family:'JetBrains Mono',monospace">
@@ -199,7 +201,7 @@ function toggleMobileMenu() {
 
 /* ===== ENHANCEMENTS: scroll reveal + count-up ===== */
 // Keep this list in sync with the reveal selectors in style.css
-const REVEAL_SEL = '.hero-grid > div, .section-head, .highlight-grid > *, .research-strip, .news-card, .media-item, .feat-news, .card-plain, .pi-grid, .stat, .member, .alum, .pub, .research-detail';
+const REVEAL_SEL = '.hero-grid > div, .section-head, .highlight-grid > *, .research-strip, .news-card, .media-item, .feat-news, .card-plain, .pi-grid, .stat, .member, .alum, .pub, .research-detail, .vaga, .prog';
 
 function initReveal() {
   const els = Array.from(document.querySelectorAll(REVEAL_SEL));

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<script>(function(){try{var t=localStorage.getItem('plasmovet_theme');if(t!=='light'&&t!=='dark')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}document.documentElement.classList.add('js');})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Opportunities · Plasmovet</title>
+<meta name="description" content="Open positions, graduate programmes and how to join the PlasmoVet group at IBCCF/UFRJ."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 80px 0 48px; }
+.page-hero h1 { font-family:'Instrument Serif',serif; font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing:-0.025em; margin-top: 18px; max-width: 15ch; }
+.page-hero h1 em { color: var(--coral); font-style: italic; }
+.page-hero p { font-size: 18px; color: var(--ink-2); line-height: 1.6; max-width: 56ch; margin-top: 28px; }
+
+.hero-strip { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+
+/* ---- vacancy cards ---- */
+.vagas { display:flex; flex-direction:column; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:8px; }
+.vaga { background:var(--paper); display:grid; grid-template-columns: 300px 1fr; gap:40px; padding:36px; align-items:start; transition: background .3s ease; }
+.vaga:hover { background: var(--card); }
+.vaga .poster { border-radius:6px; overflow:hidden; border:1px solid var(--line); background:var(--paper-2); }
+.vaga .poster img { width:100%; height:auto; display:block; }
+.vaga .vnum { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.vaga h3 { font-family:'Instrument Serif',serif; font-size:34px; line-height:1.05; letter-spacing:-0.02em; margin-bottom:6px; }
+.vaga h3 em { color:var(--coral); font-style:italic; }
+.vaga .pitch { font-size:15px; color:var(--ink-2); line-height:1.65; max-width:52ch; margin-bottom:22px; }
+.vcols { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+@media (max-width:1100px){ .vaga { grid-template-columns:220px 1fr; gap:28px; } }
+@media (max-width:820px){ .vaga { grid-template-columns:1fr; padding:26px; } .vcols { grid-template-columns:1fr; gap:20px; } }
+.vlabel { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:10px; }
+.vlist { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.vlist li { font-size:13.5px; line-height:1.5; color:var(--ink-2); padding-left:15px; position:relative; }
+.vlist li::before { content:''; position:absolute; left:2px; top:8px; width:5px; height:5px; border-radius:50%; background:var(--coral); }
+.vwho { font-size:13.5px; line-height:1.6; color:var(--muted); }
+.vtags { display:flex; flex-wrap:wrap; gap:7px; margin-top:22px; }
+
+/* ---- programmes ---- */
+.progs { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+@media (max-width:820px){ .progs { grid-template-columns:1fr; } }
+.prog { background:var(--paper); padding:32px; display:flex; flex-direction:column; transition:background .3s ease; }
+.prog:hover { background:var(--card); }
+.prog .sigla { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:14px; }
+.prog h4 { font-family:'Instrument Serif',serif; font-size:24px; line-height:1.15; letter-spacing:-0.015em; margin-bottom:10px; }
+.prog p { font-size:13.5px; color:var(--muted); line-height:1.6; }
+.prog .foot { margin-top:auto; padding-top:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); }
+
+/* ---- apply band ---- */
+.apply { background:var(--coral-wash); border-radius:8px; padding:48px; display:grid; grid-template-columns:1.4fr 1fr; gap:40px; align-items:center; }
+@media (max-width:820px){ .apply { grid-template-columns:1fr; padding:32px; } }
+.apply h3 { font-family:'Instrument Serif',serif; font-size:clamp(30px,4vw,42px); line-height:1.05; letter-spacing:-0.02em; }
+.apply h3 em { color:var(--coral-deep); font-style:italic; }
+.apply p { font-size:15px; color:var(--ink-2); line-height:1.65; margin-top:14px; max-width:46ch; }
+.apply-mail { font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.04em; }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="Join the group" data-i18n-pt="Venha para o grupo">Join the group</span></div>
+      <h1 data-i18n-html
+          data-i18n-en="Come do <em>science</em> with us."
+          data-i18n-pt="Venha fazer <em>ciência</em> com a gente.">Come do <em>science</em> with us.</h1>
+      <p data-i18n-en="We are recruiting undergraduate, master's and doctoral students for three complementary fronts — imaging, bench biochemistry, and data. You do not need to arrive knowing everything: curiosity, care with protocol and willingness to learn count for more."
+         data-i18n-pt="Estamos recrutando estudantes de iniciação científica, mestrado e doutorado para três frentes complementares — imagem, bancada e dados. Você não precisa chegar sabendo tudo: curiosidade, cuidado com o protocolo e vontade de aprender pesam mais.">We are recruiting undergraduate, master's and doctoral students for three complementary fronts — imaging, bench biochemistry, and data. You do not need to arrive knowing everything: curiosity, care with protocol and willingness to learn count for more.</p>
+      <div class="hero-strip">
+        <span class="chip coral"><span class="chip-dot"></span><span data-i18n-en="Open · 2026" data-i18n-pt="Abertas · 2026">Open · 2026</span></span>
+        <span class="chip" data-i18n-en="Undergraduate (IC)" data-i18n-pt="Iniciação científica">Undergraduate (IC)</span>
+        <span class="chip" data-i18n-en="Master's" data-i18n-pt="Mestrado">Master's</span>
+        <span class="chip" data-i18n-en="Doctorate" data-i18n-pt="Doutorado">Doctorate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Open positions ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="01 · Open positions" data-i18n-pt="01 · Vagas abertas">01 · Open positions</span></div>
+          <h2 data-i18n-html data-i18n-en="Three ways <em>in</em>." data-i18n-pt="Três portas de <em>entrada</em>.">Three ways <em>in</em>.</h2>
+        </div>
+        <div class="right">
+          <p data-i18n-en="The three fronts talk to each other — most projects end up borrowing from at least two. Say which one calls you most and we will find the fit."
+             data-i18n-pt="As três frentes conversam entre si — a maioria dos projetos acaba emprestando de pelo menos duas. Diga qual mais te chama que a gente encontra o encaixe.">The three fronts talk to each other — most projects end up borrowing from at least two. Say which one calls you most and we will find the fit.</p>
+        </div>
+      </div>
+
+      <div class="vagas">
+
+        <article class="vaga">
+          <div class="poster">
+            <picture>
+              <source srcset="assets/opportunities/ic-microscopia.webp" type="image/webp"/>
+              <img src="assets/opportunities/ic-microscopia.jpg" loading="lazy" decoding="async" alt="Cartaz de divulgação: vaga em microscopia e processamento de imagens no PlasmoVet"/>
+            </picture>
+          </div>
+          <div>
+            <div class="vnum">01 — IC · <span data-i18n-en="MSc" data-i18n-pt="Mestrado">MSc</span> · <span data-i18n-en="PhD" data-i18n-pt="Doutorado">PhD</span></div>
+            <h3 data-i18n-html data-i18n-en="Microscopy &amp; <em>image processing</em>." data-i18n-pt="Microscopia &amp; <em>processamento de imagens</em>.">Microscopy &amp; <em>image processing</em>.</h3>
+            <p class="pitch" data-i18n-en="Let's see what happens inside the mosquito in three dimensions — from volume electron microscopy to deep learning on the resulting stacks."
+               data-i18n-pt="Vamos ver o que acontece dentro do mosquito em três dimensões — da microscopia eletrônica de volume ao aprendizado profundo aplicado às pilhas de imagem.">Let's see what happens inside the mosquito in three dimensions — from volume electron microscopy to deep learning on the resulting stacks.</p>
+            <div class="vcols">
+              <div>
+                <div class="vlabel" data-i18n-en="What you will do" data-i18n-pt="O que você vai fazer">What you will do</div>
+                <ul class="vlist">
+                  <li data-i18n-en="FIB-SEM and SBF-SEM on the CENABIO platform" data-i18n-pt="FIB-SEM e SBF-SEM na plataforma do CENABIO">FIB-SEM and SBF-SEM on the CENABIO platform</li>
+                  <li data-i18n-en="Confocal and super-resolution microscopy" data-i18n-pt="Confocal e super-resolução">Confocal and super-resolution microscopy</li>
+                  <li data-i18n-en="3D segmentation and reconstruction in Fiji and napari" data-i18n-pt="Segmentação e reconstrução 3D em Fiji e napari">3D segmentation and reconstruction in Fiji and napari</li>
+                  <li data-i18n-en="Deep learning models applied to imaging" data-i18n-pt="Modelos de aprendizado profundo aplicados à imagem">Deep learning models applied to imaging</li>
+                </ul>
+              </div>
+              <div>
+                <div class="vlabel" data-i18n-en="Who we are looking for" data-i18n-pt="Quem procuramos">Who we are looking for</div>
+                <p class="vwho" data-i18n-en="Biology, Chemistry, Computing or related fields. You don't need to know how to program to start, but you should feel an affinity for it."
+                   data-i18n-pt="Biologia, Química, Computação ou áreas correlatas. Não é preciso saber programar para começar, mas ter afinidade com a área.">Biology, Chemistry, Computing or related fields. You don't need to know how to program to start, but you should feel an affinity for it.</p>
+              </div>
+            </div>
+            <div class="vtags">
+              <span class="chip">FIB-SEM</span><span class="chip">SBF-SEM</span><span class="chip" data-i18n-en="Confocal" data-i18n-pt="Confocal">Confocal</span><span class="chip">Fiji · napari</span><span class="chip">CENABIO</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="vaga">
+          <div class="poster">
+            <picture>
+              <source srcset="assets/opportunities/ic-biomol.webp" type="image/webp"/>
+              <img src="assets/opportunities/ic-biomol.jpg" loading="lazy" decoding="async" alt="Cartaz de divulgação: vaga em bioquímica e biologia molecular no PlasmoVet"/>
+            </picture>
+          </div>
+          <div>
+            <div class="vnum">02 — IC · <span data-i18n-en="MSc" data-i18n-pt="Mestrado">MSc</span> · <span data-i18n-en="PhD" data-i18n-pt="Doutorado">PhD</span></div>
+            <h3 data-i18n-html data-i18n-en="Biochemistry &amp; <em>molecular biology</em>." data-i18n-pt="Bioquímica &amp; <em>biologia molecular</em>.">Biochemistry &amp; <em>molecular biology</em>.</h3>
+            <p class="pitch" data-i18n-en="We want to understand how mosquitoes transmit disease — at the bench, from cell culture and RNAi to whole-insect infection in the insectary."
+               data-i18n-pt="Queremos entender como os mosquitos transmitem as doenças — na bancada, do cultivo celular e RNAi à infecção do inseto inteiro no insetário.">We want to understand how mosquitoes transmit disease — at the bench, from cell culture and RNAi to whole-insect infection in the insectary.</p>
+            <div class="vcols">
+              <div>
+                <div class="vlabel" data-i18n-en="What you will do" data-i18n-pt="O que você vai fazer">What you will do</div>
+                <ul class="vlist">
+                  <li data-i18n-en="Mosquito cell culture and infections" data-i18n-pt="Cultivo de células de mosquitos e infecções">Mosquito cell culture and infections</li>
+                  <li data-i18n-en="Molecular biology and transgenics" data-i18n-pt="Biologia molecular e transgênicos">Molecular biology and transgenics</li>
+                  <li data-i18n-en="Metabolic and bioenergetic studies" data-i18n-pt="Estudos metabólicos e energéticos">Metabolic and bioenergetic studies</li>
+                  <li data-i18n-en="Rearing Aedes and Anopheles in the insectary, and infections" data-i18n-pt="Criação de Aedes e Anopheles em insetários e infecções">Rearing Aedes and Anopheles in the insectary, and infections</li>
+                </ul>
+              </div>
+              <div>
+                <div class="vlabel" data-i18n-en="Who we are looking for" data-i18n-pt="Quem procuramos">Who we are looking for</div>
+                <p class="vwho" data-i18n-en="Biology, biomedicine, pharmacy, chemistry or nutrition. A taste for the bench, discipline with protocol, and patience with the experiment that has to be repeated."
+                   data-i18n-pt="Biologia, biomedicina, farmácia, química ou nutrição. Gosto por bancada, disciplina de protocolo e paciência com experimento que precisa ser repetido.">Biology, biomedicine, pharmacy, chemistry or nutrition. A taste for the bench, discipline with protocol, and patience with the experiment that has to be repeated.</p>
+              </div>
+            </div>
+            <div class="vtags">
+              <span class="chip">RNAi</span><span class="chip">RT-qPCR</span><span class="chip"><em>Aedes aegypti</em></span><span class="chip">Aag2</span><span class="chip" data-i18n-en="Mitochondrial metabolism" data-i18n-pt="Metabolismo mitocondrial">Mitochondrial metabolism</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="vaga">
+          <div class="poster">
+            <picture>
+              <source srcset="assets/opportunities/ic-omicas.webp" type="image/webp"/>
+              <img src="assets/opportunities/ic-omicas.jpg" loading="lazy" decoding="async" alt="Cartaz de divulgação: vaga em ômicas e bioinformática no PlasmoVet"/>
+            </picture>
+          </div>
+          <div>
+            <div class="vnum">03 — IC · <span data-i18n-en="MSc" data-i18n-pt="Mestrado">MSc</span> · <span data-i18n-en="PhD" data-i18n-pt="Doutorado">PhD</span></div>
+            <h3 data-i18n-html data-i18n-en="Omics &amp; <em>integrative analysis</em>." data-i18n-pt="Ômicas &amp; <em>análises integrativas</em>.">Omics &amp; <em>integrative analysis</em>.</h3>
+            <p class="pitch" data-i18n-en="What do the data reveal about the mosquito? Large omics datasets, integrative analysis and geoclimatic modelling — turning data into new questions."
+               data-i18n-pt="O que os dados revelam sobre o mosquito? Grandes conjuntos ômicos, análises integrativas e modelagem geoclimática — transformando dados em novas perguntas.">What do the data reveal about the mosquito? Large omics datasets, integrative analysis and geoclimatic modelling — turning data into new questions.</p>
+            <div class="vcols">
+              <div>
+                <div class="vlabel" data-i18n-en="What you will do" data-i18n-pt="O que você vai fazer">What you will do</div>
+                <ul class="vlist">
+                  <li data-i18n-en="Omics techniques for biological studies" data-i18n-pt="Técnicas ômicas para estudos biológicos">Omics techniques for biological studies</li>
+                  <li data-i18n-en="Analysis of large data packages" data-i18n-pt="Análise de grandes pacotes de dados">Analysis of large data packages</li>
+                  <li data-i18n-en="Geoclimatic modelling and analysis" data-i18n-pt="Modelagem e análises geoclimáticas">Geoclimatic modelling and analysis</li>
+                </ul>
+              </div>
+              <div>
+                <div class="vlabel" data-i18n-en="Who we are looking for" data-i18n-pt="Quem procuramos">Who we are looking for</div>
+                <p class="vwho" data-i18n-en="Familiarity with computing weighs more than programming experience. If you like asking a dataset questions, you will fit."
+                   data-i18n-pt="Familiaridade com a computação pesa mais que experiência em programação. Se você gosta de fazer perguntas a um conjunto de dados, vai se encaixar.">Familiarity with computing weighs more than programming experience. If you like asking a dataset questions, you will fit.</p>
+              </div>
+            </div>
+            <div class="vtags">
+              <span class="chip" data-i18n-en="Transcriptomics" data-i18n-pt="Transcriptômica">Transcriptomics</span><span class="chip" data-i18n-en="Bioinformatics" data-i18n-pt="Bioinformática">Bioinformatics</span><span class="chip" data-i18n-en="Geoclimatic data" data-i18n-pt="Dados geoclimáticos">Geoclimatic data</span><span class="chip">R · Python</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Graduate programmes ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label"><span class="bar"></span><span class="eyebrow coral" data-i18n-en="02 · Graduate programmes" data-i18n-pt="02 · Programas de pós-graduação">02 · Graduate programmes</span></div>
+          <h2 data-i18n-html data-i18n-en="Where you can <em>enrol</em>." data-i18n-pt="Onde você pode se <em>matricular</em>.">Where you can <em>enrol</em>.</h2>
+        </div>
+        <div class="right">
+          <p data-i18n-en="Master's and doctoral students in the group enrol through one of the two graduate programmes below, both at IBCCF/UFRJ."
+             data-i18n-pt="Estudantes de mestrado e doutorado do grupo ingressam por um dos dois programas abaixo, ambos no IBCCF/UFRJ.">Master's and doctoral students in the group enrol through one of the two graduate programmes below, both at IBCCF/UFRJ.</p>
+        </div>
+      </div>
+
+      <div class="progs">
+        <article class="prog">
+          <div class="sigla">PPGCB · Biofísica</div>
+          <h4 data-i18n-en="Biological Sciences — Biophysics" data-i18n-pt="Ciências Biológicas — Biofísica">Biological Sciences — Biophysics</h4>
+          <p data-i18n-en="The classic academic route of the Institute: master's and doctorate in Biological Sciences (Biophysics), covering cell biology, biochemistry and the physiology of host–pathogen–vector interactions."
+             data-i18n-pt="A rota acadêmica clássica do Instituto: mestrado e doutorado em Ciências Biológicas (Biofísica), cobrindo biologia celular, bioquímica e a fisiologia das interações hospedeiro–patógeno–vetor.">The classic academic route of the Institute: master's and doctorate in Biological Sciences (Biophysics), covering cell biology, biochemistry and the physiology of host–pathogen–vector interactions.</p>
+          <div class="foot">IBCCF · UFRJ</div>
+        </article>
+
+        <article class="prog">
+          <div class="sigla">PPGP-TBB</div>
+          <h4 data-i18n-en="Professional Programme in Bioimaging &amp; Biostructure Technologies" data-i18n-pt="Mestrado Profissional em Tecnologias de Bioimagem e Bioestrutura">Professional Programme in Bioimaging &amp; Biostructure Technologies</h4>
+          <p data-i18n-en="A professional graduate programme focused on imaging and structural technologies — the natural route for projects built around electron, confocal and super-resolution microscopy."
+             data-i18n-pt="Programa de pós-graduação profissional voltado a tecnologias de imagem e de estrutura — a rota natural para projetos construídos em torno de microscopia eletrônica, confocal e de super-resolução.">A professional graduate programme focused on imaging and structural technologies — the natural route for projects built around electron, confocal and super-resolution microscopy.</p>
+          <div class="foot">IBCCF · UFRJ</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Apply ===== -->
+  <section>
+    <div class="container">
+      <div class="apply">
+        <div>
+          <h3 data-i18n-html data-i18n-en="Send us your <em>interest</em>." data-i18n-pt="Envie o seu <em>interesse</em>.">Send us your <em>interest</em>.</h3>
+          <p data-i18n-en="A short message saying who you are, what you are studying and which of the three fronts caught your eye is enough to start. Attach a CV if you have one at hand — it is not a requirement."
+             data-i18n-pt="Uma mensagem curta dizendo quem você é, o que está cursando e qual das três frentes te chamou atenção já basta para começar. Anexe um currículo se tiver à mão — não é requisito.">A short message saying who you are, what you are studying and which of the three fronts caught your eye is enough to start. Attach a CV if you have one at hand — it is not a requirement.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="mailto:fabiomg@biof.ufrj.br?subject=Interesse%20PlasmoVet" class="btn btn-primary apply-mail">fabiomg@biof.ufrj.br <span class="arrow">→</span></a>
+          <a href="team.html" class="btn btn-ghost"><span data-i18n-en="Meet the team" data-i18n-pt="Conheça a equipe">Meet the team</span> <span class="arrow">→</span></a>
+          <a href="research.html" class="btn btn-ghost"><span data-i18n-en="See the research lines" data-i18n-pt="Ver as linhas de pesquisa">See the research lines</span> <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-slot"></div>
+<script src="chrome.js"></script>
+<script>renderChrome('opportunities');</script>
+</body>
+</html>
