@@ -159,8 +159,9 @@ function renderFooter() {
             <ul>
               <li><a href="https://www.ncbi.nlm.nih.gov/myncbi/fabio.gomes.2/bibliography/public/" target="_blank">PubMed Bibliography</a></li>
               <li><a href="https://biof.ufrj.br" target="_blank">IBCCF/UFRJ</a></li>
-              <li><a href="#" data-i18n-en="Open positions" data-i18n-pt="Oportunidades">Open positions</a></li>
-              <li><a href="#" data-i18n-en="Media kit" data-i18n-pt="Mídia">Media kit</a></li>
+              <li><a href="opportunities.html" data-i18n-en="Open positions" data-i18n-pt="Vagas abertas">Open positions</a></li>
+              <li><a href="https://orcid.org/0000-0001-8439-8762" target="_blank" rel="noopener">ORCID</a></li>
+              <li><a href="https://lattes.cnpq.br/8594781726473810" target="_blank" rel="noopener">Lattes CV</a></li>
             </ul>
           </div>
           <div>
